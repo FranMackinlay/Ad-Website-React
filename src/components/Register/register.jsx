@@ -28,6 +28,8 @@ export default class Register extends Component {
     const { userInput, passInput } = this.state;
     console.log(userInput, passInput);
     register(userInput, passInput);
+
+    this.props.history.push('/login');
   }
 
   render() {
