@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import api from '../../services/api'
-import './App.css';
+import '../../App.css';
 
 const { register } = api();
 
 export default class Register extends Component {
-  state = {
-    userInput: '',
-    passInput: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInput: '',
+      passInput: '',
+      error: false
+    }
   }
+
 
   userTyping = event => {
     this.setState({
@@ -33,7 +38,9 @@ export default class Register extends Component {
     if (isRegistered == true) {
       this.props.history.push('/login');
     } else {
-
+      this.setState({
+        error: true
+      })
     }
 
   }
@@ -43,12 +50,14 @@ export default class Register extends Component {
     return (
       <div>
         <h1>Crear una cuenta</h1>
-        <p className="user-taken">Usuario ya registrado</p>
+
         <form onSubmit={this.onSubmit}>
           <input type="text" onChange={this.userTyping} placeholder="Username.." />
           <input type="password" onChange={this.passTyping} placeholder="Password.." />
           <button type="submit">Registrarse</button>
         </form>
+        <p className={this.state.error ? 'user-taken' : 'user'}>Usuario ya registrado,
+          intente con otro.</p>
       </div>
     )
   }
