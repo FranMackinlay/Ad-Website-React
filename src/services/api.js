@@ -1,6 +1,7 @@
 const api = (API_URL = 'http://34.89.93.186:8080') => {
   const registerApiEndpoint = `${API_URL}/apiv1/register`;
   const loginApiEndpoint = `${API_URL}/apiv1/login`;
+  const adsApiEndpoint = `${API_URL}/apiv1/anuncios`;
   return {
     register: async (username, password) => {
       try {
@@ -16,10 +17,8 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         })
 
-        const isSuccesfull = await response.json();
-        console.log(isSuccesfull);
-        const { success, error } = isSuccesfull;
-        console.log(success, error);
+        const isRegistrationSuccesfull = await response.json();
+        const { success, error } = isRegistrationSuccesfull;
         if (success) {
           return success;
         } else if (error) {
@@ -43,13 +42,43 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         })
 
-        console.log(response.json());
+        const isLoginSuccesfull = await response.json();
+        const { success, error } = isLoginSuccesfull;
+        if (success) {
+          return success;
+        } else if (error) {
+          return error;
+        }
 
 
       } catch (err) {
         console.error(err);
       }
+    },
+    getAds: async () => {
+      try {
+        const response = await fetch(`${adsApiEndpoint}`, {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          credentials: 'include'
+        });
+
+        const isGetAdsSuccesfull = await response.json();
+        console.log(isGetAdsSuccesfull);
+        const { success, error, results } = isGetAdsSuccesfull;
+
+        if (success) {
+          return results;
+        } else if (error) {
+          return error;
+        }
+      } catch (err) {
+        console.error(err);
+      }
     }
+
   }
 }
 
