@@ -4,14 +4,19 @@
 .user-taken {
   color: darkred;
 }
+
 form {
   display: flex;
   flex-direction: column;
-  width: 25%;
-  margin: 10px auto;
+  width: 35%;
+  margin: 50px auto;
 }
 .registration, .login {
   text-align: center;
+  background-color: grey;
+  border-radius: 10px;
+  width: 500px;
+  margin: 0 auto;
 }
 input {
   margin: 10px;
@@ -19,3 +24,32 @@ input {
 button {
   margin: 10px;
 }
+ul {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+li {
+  border: solid 2px darkred;
+  background-color: lightslategrey;
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
+  margin: 10px;
+  text-align: center;
+}
+img {
+  height: 200px;
+  margin: 20px;
+}
+h1 {
+  text-align: center;
+}
+body {
+  background-color: black;
+  color: white;
+}
+
