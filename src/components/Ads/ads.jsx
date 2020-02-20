@@ -34,6 +34,7 @@ export default class Ads extends Component {
           {adsList.map(ad => {
             return (
               <li key={ad._id}>
+                <img src={ad.photo} alt="Ad Image" />
                 <p>{ad.name}</p>
                 <p>{ad.price}</p>
                 <p>{ad.type}</p>
