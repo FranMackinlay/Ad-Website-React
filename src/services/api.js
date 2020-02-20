@@ -16,7 +16,15 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         })
 
-        console.log(response.json());
+        const isSuccesfull = await response.json();
+        console.log(isSuccesfull);
+        const { success, error } = isSuccesfull;
+        console.log(success, error);
+        if (success) {
+          return success;
+        } else if (error) {
+          return error;
+        }
       } catch (err) {
         console.error(err);
       }

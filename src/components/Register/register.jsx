@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api'
+import './App.css';
 
 const { register } = api();
 
@@ -23,13 +24,18 @@ export default class Register extends Component {
   };
 
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault();
     const { userInput, passInput } = this.state;
-    console.log(userInput, passInput);
-    register(userInput, passInput);
+    const isRegistered = await register(userInput, passInput);
+    console.log(isRegistered);
 
-    this.props.history.push('/login');
+    if (isRegistered == true) {
+      this.props.history.push('/login');
+    } else {
+
+    }
+
   }
 
   render() {
@@ -37,6 +43,7 @@ export default class Register extends Component {
     return (
       <div>
         <h1>Crear una cuenta</h1>
+        <p className="user-taken">Usuario ya registrado</p>
         <form onSubmit={this.onSubmit}>
           <input type="text" onChange={this.userTyping} placeholder="Username.." />
           <input type="password" onChange={this.passTyping} placeholder="Password.." />
