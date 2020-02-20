@@ -4,3 +4,18 @@
 .user-taken {
   color: darkred;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: 10px auto;
+}
+.registration, .login {
+  text-align: center;
+}
+input {
+  margin: 10px;
+}
+button {
+  margin: 10px;
+}

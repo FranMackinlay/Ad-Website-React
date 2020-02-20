@@ -48,7 +48,7 @@ export default class Register extends Component {
   render() {
 
     return (
-      <div>
+      <div className="registration">
         <h1>Crear una cuenta</h1>
 
         <form onSubmit={this.onSubmit}>

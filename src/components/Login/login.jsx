@@ -33,7 +33,7 @@ export default class Register extends Component {
   render() {
 
     return (
-      <div>
+      <div className="login">
         <h1>Iniciar Sesion</h1>
         <form onSubmit={this.onSubmit}>
           <input type="text" onChange={this.userTyping} placeholder="Username.." />
