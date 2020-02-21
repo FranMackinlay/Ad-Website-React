@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
+import { Link } from "react-router-dom";
 
 const { getAdDetail } = api();
 
@@ -26,8 +27,6 @@ export default class adDetail extends Component {
 
   render() {
     const { ad } = this.state;
-    console.log(ad);
-
 
     return (
       <div>
@@ -35,7 +34,10 @@ export default class adDetail extends Component {
         <p>{ad.price}</p>
         <p>{ad.type}</p>
         <p>{ad.description}</p>
-        <img src={ad.photo} alt="Ad Image" />
+        <img src={ad.photo} alt="AdImage" />
+        <Link to="/ads">
+          <button>Atras</button>
+        </Link>
       </div >
     )
   }
