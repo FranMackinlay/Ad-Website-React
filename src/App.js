@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } fr
 import Register from './components/Register/register';
 import Login from './components/Login/login';
 import Ads from './components/Ads/ads';
+import adDetail from './components/AdDetail/adDetail';
 import './App.css';
 
 export default class App extends Component {
@@ -15,6 +16,7 @@ export default class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/ads" component={Ads} />
+          <Route path="/detail/:_id" component={adDetail} />
 
           <Redirect to="/register" />
         </Switch>
