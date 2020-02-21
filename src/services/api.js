@@ -96,6 +96,29 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
       } catch (err) {
         console.error(err);
       }
+    },
+    filterAd: async (query, value) => {
+      try {
+        console.log(query, value, `${adsApiEndpoint}?${query}=${value}`);
+        const response = await fetch(`${adsApiEndpoint}?${query}=${value}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        });
+        const isFilterAdOk = await response.json();
+        const { success, error, results } = isFilterAdOk;
+        if (success) {
+          return results;
+        } else if (error) {
+          return error;
+        }
+
+
+      } catch (err) {
+        console.error(err);
+      }
     }
 
   }
