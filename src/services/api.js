@@ -66,11 +66,30 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
         });
 
         const isGetAdsSuccesfull = await response.json();
-        console.log(isGetAdsSuccesfull);
         const { success, error, results } = isGetAdsSuccesfull;
 
         if (success) {
           return results;
+        } else if (error) {
+          return error;
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    getAdDetail: async id => {
+      try {
+        const response = await fetch(`${adsApiEndpoint}/${id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        });
+        const isGetAdDetailOk = await response.json();
+        const { success, error, result } = isGetAdDetailOk;
+        if (success) {
+          return result;
         } else if (error) {
           return error;
         }
