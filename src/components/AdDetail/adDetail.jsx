@@ -35,7 +35,7 @@ export default class adDetail extends Component {
         <p>{ad.type}</p>
         <p>{ad.description}</p>
         <img src={ad.photo} alt="AdImage" />
-        <Link to="/ads">
+        <Link to="/anuncios">
           <button>Atras</button>
         </Link>
       </div >
