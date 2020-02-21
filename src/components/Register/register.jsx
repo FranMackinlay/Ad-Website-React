@@ -35,7 +35,7 @@ export default class Register extends Component {
     const isRegistered = await register(userInput, passInput);
     console.log(isRegistered);
 
-    if (isRegistered == true) {
+    if (isRegistered === true) {
       this.props.history.push('/login');
     } else {
       this.setState({
