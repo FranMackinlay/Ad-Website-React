@@ -16,9 +16,10 @@ export default class App extends Component {
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="/ads" component={Ads} />
-          <Route path="/detail/:_id" component={adDetail} />
+          <Route path="/anuncios" component={Ads} />
+          <Route exact path="/detail/:_id" component={adDetail} />
           <Route path="/createAd" component={CreateAd} />
+
           <Redirect to="/register" />
         </Switch>
 
