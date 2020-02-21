@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
+import { Link } from "react-router-dom";
 import '../../App.css';
 
 const { getAds } = api();
+
+export const listOfAds = async () => {
+  const ads = await getAds();
+  return ads;
+}
 
 export default class Ads extends Component {
   constructor(props) {
@@ -17,7 +23,6 @@ export default class Ads extends Component {
 
   getAdsList = async () => {
     const ads = await getAds();
-    console.log(ads);
     this.setState({
       adsList: ads
     })
@@ -31,15 +36,18 @@ export default class Ads extends Component {
       <div>
         <h1>Anuncios</h1>
         <ul>
+
           {adsList.map(ad => {
             return (
-              <li key={ad._id}>
-                <img src={ad.photo} alt="Ad Image" />
-                <p>{ad.name}</p>
-                <p>{ad.price}</p>
-                <p>{ad.type}</p>
-                <p>{ad.description}</p>
-              </li>
+              <Link to={`/detail/${ad._id}`}>
+                <li key={ad._id}>
+                  <img src={ad.photo} alt="Ad Image" />
+                  <p>{ad.name}</p>
+                  <p>{ad.price}</p>
+                  <p>{ad.type}</p>
+                  <p>{ad.description}</p>
+                </li>
+              </Link>
             )
           }
           )}
