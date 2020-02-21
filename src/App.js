@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Register from './components/Register/register';
 import Login from './components/Login/login';
 import Ads from './components/Ads/ads';
 import adDetail from './components/AdDetail/adDetail';
+import CreateAd from './components/CreateAd/createAd';
 import './App.css';
 
 export default class App extends Component {
@@ -17,7 +18,7 @@ export default class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/ads" component={Ads} />
           <Route path="/detail/:_id" component={adDetail} />
-
+          <Route path="/createAd" component={CreateAd} />
           <Redirect to="/register" />
         </Switch>
 
