@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
+import { Link } from "react-router-dom";
 
 const { createAd } = api();
 
@@ -48,15 +49,22 @@ export default class CreateAd extends Component {
   render() {
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input onChange={this.handleInput} name="name" type="text" placeholder="Ad Name" />
-        <input onChange={this.handleInput} name="price" type="text" placeholder="Ad Price" />
-        <input onChange={this.handleInput} name="description" type="text" placeholder="Ad Description" />
-        <input onChange={this.handleInput} name="tags" type="text" placeholder="Ad Tags" />
-        <input onChange={this.handleInput} name="type" type="text" placeholder="Ad Type" />
-        <input onChange={this.handleInput} name="photo" type="text" placeholder="Ad Photo" />
-        <button type="submit">Crear Anuncio</button>
-      </form>
+      <div>
+        <Link to="/anuncios">
+          <button>Atras</button>
+        </Link>
+        <form onSubmit={this.onSubmit}>
+          <input onChange={this.handleInput} name="name" type="text" placeholder="Ad Name" />
+          <input onChange={this.handleInput} name="price" type="text" placeholder="Ad Price" />
+          <input onChange={this.handleInput} name="description" type="text" placeholder="Ad Description" />
+          <input onChange={this.handleInput} name="tags" type="text" placeholder="Ad Tags" />
+          <input onChange={this.handleInput} name="type" type="text" placeholder="Ad Type" />
+          <input onChange={this.handleInput} name="photo" type="text" placeholder="Ad Photo" />
+          <button type="submit">Crear Anuncio</button>
+        </form>
+        <br />
+
+      </div>
 
     )
   }

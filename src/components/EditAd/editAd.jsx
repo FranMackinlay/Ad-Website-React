@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
+import { Link } from "react-router-dom";
 
 const { getAdDetail, editAd } = api();
 
@@ -67,6 +68,9 @@ export default class EditAd extends Component {
     const { name, price, description, tags, type, photo } = this.state;
     return (
       <div>
+        <Link to="/anuncios">
+          <button>Atras</button>
+        </Link>
         <h1>Editar anuncio de: {name}</h1>
         <form onSubmit={this.onSubmit}>
           <input onChange={this.handleInput} value={name} name="name" type="text" placeholder="Ad Name" />
@@ -77,6 +81,8 @@ export default class EditAd extends Component {
           <input onChange={this.handleInput} value={photo} name="photo" type="text" placeholder="Ad Photo" />
           <button type="submit">Editar Anuncio</button>
         </form>
+        <br />
+
       </div>
 
     )

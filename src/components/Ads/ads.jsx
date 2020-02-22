@@ -83,6 +83,9 @@ export default class Ads extends Component {
     if (filteredAdsList === null) {
       return (
         <div>
+          <Link to="/login">
+            <button>Log Out</button>
+          </Link>
           <h1>Anuncios</h1>
           <Link to="/createAd">
             <button className="create-ad">Crear Anuncio</button>

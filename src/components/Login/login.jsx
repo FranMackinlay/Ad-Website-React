@@ -29,9 +29,8 @@ export default class Register extends Component {
 
     const isLoginOk = await login(userInput, passInput);
 
-    if (isLoginOk === 'Error: User not found') {
-      alert(isLoginOk);
-      this.props.history.push('/register');
+    if (isLoginOk.error) {
+      alert(isLoginOk.error);
     } else {
       this.props.history.push('/anuncios');
     }
