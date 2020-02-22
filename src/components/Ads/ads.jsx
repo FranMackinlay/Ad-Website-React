@@ -31,10 +31,16 @@ export default class Ads extends Component {
 
   getAdsList = async () => {
     const ads = await getAds();
-    this.setState({
-      adsList: ads
-    })
-    return ads;
+    if (ads.error) {
+      alert('No se ha encontrado la lista de anuncios');
+      this.props.history.push('/login');
+    } else {
+      this.setState({
+        adsList: ads.results
+      })
+      return ads.results;
+    }
+
   }
   onType = event => {
     const value = event.target.value;
@@ -67,13 +73,17 @@ export default class Ads extends Component {
     event.preventDefault();
     this.onResetFilter();
     const adsWithFilter = await this.filterAds(`${this.state.filterSelect}`, `${this.state.filterInput}`);
-    console.log(adsWithFilter);
-    adsWithFilter.map(adFiltered => {
-      filteredAdsArray.push(adFiltered);
-    });
-    this.setState({
-      filteredAdsList: filteredAdsArray
-    });
+    if (adsWithFilter.error) {
+      alert('Por favor ingrese un valor para filtrar.');
+    } else {
+      adsWithFilter.map(adFiltered => {
+        filteredAdsArray.push(adFiltered);
+      });
+      this.setState({
+        filteredAdsList: filteredAdsArray
+      });
+    }
+
 
 
   }

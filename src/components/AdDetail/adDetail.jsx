@@ -18,10 +18,16 @@ export default class adDetail extends Component {
 
   getDetailAd = async (id) => {
     const detailAd = await getAdDetail(id);
-    this.setState({
-      ad: detailAd
-    })
-    return detailAd;
+    if (detailAd.error) {
+      alert('No se ha podido encontrar el detalla de este anuncio');
+      this.props.history.push('/anuncios');
+    } else {
+      this.setState({
+        ad: detailAd.result
+      })
+      return detailAd.result;
+    }
+
   }
 
 

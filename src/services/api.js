@@ -19,12 +19,8 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
         })
 
         const isRegistrationSuccesfull = await response.json();
-        const { success, error } = isRegistrationSuccesfull;
-        if (success) {
-          return success;
-        } else if (error) {
-          return error;
-        }
+
+        return isRegistrationSuccesfull;
       } catch (err) {
         console.error(err);
       }
@@ -49,7 +45,6 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
 
         console.log(isLoginSuccesfull);
 
-        // const { success, error } = isLoginSuccesfull;
         return isLoginSuccesfull;
 
 
@@ -66,15 +61,10 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           },
           credentials: 'include'
         });
-
         const isGetAdsSuccesfull = await response.json();
-        const { success, error, results } = isGetAdsSuccesfull;
 
-        if (success) {
-          return results;
-        } else if (error) {
-          return error;
-        }
+        return isGetAdsSuccesfull;
+
       } catch (err) {
         console.error(err);
       }
@@ -89,12 +79,8 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isGetAdDetailOk = await response.json();
-        const { success, error, result } = isGetAdDetailOk;
-        if (success) {
-          return result;
-        } else if (error) {
-          return error;
-        }
+
+        return isGetAdDetailOk;
       } catch (err) {
         console.error(err);
       }
@@ -109,14 +95,8 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isFilterAdOk = await response.json();
-        console.log(isFilterAdOk);
-        const { success, error, results } = isFilterAdOk;
-        if (success) {
-          return results;
-        } else if (error) {
-          return error;
-        }
 
+        return isFilterAdOk;
 
       } catch (err) {
         console.error(err);
@@ -140,12 +120,8 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isCreateAdOk = await response.json();
-        const { success, error } = isCreateAdOk;
-        if (success) {
-          return success;
-        } else if (error) {
-          return error;
-        }
+
+        return isCreateAdOk;
 
 
       } catch (err) {
@@ -172,10 +148,8 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
         });
         console.log(response);
         const isEditAdOk = await response.json();
-        console.log(isEditAdOk);
-        // const { success, error } = isEditAdOk;
-        return isEditAdOk;
 
+        return isEditAdOk;
 
       } catch (err) {
         console.error(err);
