@@ -99,7 +99,6 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
     },
     filterAd: async (query, value) => {
       try {
-        console.log(query, value, `${adsApiEndpoint}?${query}=${value}`);
         const response = await fetch(`${adsApiEndpoint}?${query}=${value}`, {
           method: 'GET',
           headers: {
@@ -119,7 +118,32 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
       } catch (err) {
         console.error(err);
       }
+    },
+    createAd: async (name, price, description, type, photo) => {
+      try {
+        const response = await fetch(`${adsApiEndpoint}`, {
+          method: 'POST',
+          body: JSON.stringify({
+            name: `${name}`,
+            price: price,
+            description: `${description}`,
+            type: `${type}`,
+            photo: `${photo}`
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        });
+        const isCreateAdOk = await response.json();
+        console.log(isCreateAdOk);
+
+
+      } catch (err) {
+        console.error(err);
+      }
     }
+
 
   }
 }
