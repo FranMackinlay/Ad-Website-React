@@ -37,9 +37,21 @@ export default class Ads extends Component {
     return ads;
   }
   onType = event => {
-    this.setState({
-      filterInput: event.target.value
-    });
+    const value = event.target.value;
+    if (value == 'buy') {
+      this.setState({
+        filterInput: false
+      });
+    } else if (value == 'sell') {
+      this.setState({
+        filterInput: true
+      })
+    } else {
+      this.setState({
+        filterInput: event.target.value
+      });
+    }
+
   };
 
   filterAds = async (query, value) => {
@@ -124,6 +136,9 @@ export default class Ads extends Component {
     } else {
       return (
         <div>
+          <Link to="/login">
+            <button>Log Out</button>
+          </Link>
           <h1>Anuncios</h1>
           <Link to="/createAd">
             <button className="create-ad">Crear Anuncio</button>
