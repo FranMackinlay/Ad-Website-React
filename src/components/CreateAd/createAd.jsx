@@ -22,7 +22,6 @@ export default class CreateAd extends Component {
 
     if (name === 'tags') {
       const splittedValue = value.split(',');
-      console.log(splittedValue);
       this.setState({
         tags: splittedValue
       })
@@ -37,7 +36,6 @@ export default class CreateAd extends Component {
 
   onSubmit = async event => {
     event.preventDefault();
-    console.log(this.state);
     const { name, price, description, tags, type, photo } = this.state;
     const isAdCreated = await createAd(name, price, description, tags, type, photo);
     if (isAdCreated) {
