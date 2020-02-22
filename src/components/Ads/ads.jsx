@@ -53,6 +53,7 @@ export default class Ads extends Component {
   };
   onSubmit = async event => {
     event.preventDefault();
+    this.onResetFilter();
     const adsWithFilter = await this.filterAds(`${this.state.filterSelect}`, `${this.state.filterInput}`);
     console.log(adsWithFilter);
     adsWithFilter.map(adFiltered => {
@@ -61,17 +62,18 @@ export default class Ads extends Component {
     this.setState({
       filteredAdsList: filteredAdsArray
     });
-    console.log(this.state.filteredAdsList);
 
 
   }
-  onResetFilter = event => {
-    event.preventDefault();
+  onResetFilter = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
     this.setState({
-      filteredAdsList: null
+      filteredAdsList: null,
     });
+
     filteredAdsArray = [];
-    console.log(this.state.filteredAdsList);
   }
 
   render() {
@@ -100,7 +102,7 @@ export default class Ads extends Component {
 
             {adsList.map(ad => {
               return (
-                <Link to={`/detail/${ad._id}`}>
+                <Link to={`/anuncios/${ad._id}`}>
                   <li key={ad._id}>
                     <img src={ad.photo} alt="AdImage" />
                     <h2>{ad.name}</h2>
@@ -108,6 +110,7 @@ export default class Ads extends Component {
                     <p>{ad.type}</p>
                     <p>{ad.description}</p>
                   </li>
+
                 </Link>
               )
             }
@@ -140,7 +143,7 @@ export default class Ads extends Component {
                 <Link to={`/detail/${ad._id}`}>
                   <li key={ad._id}>
                     <img src={ad.photo} alt="AdImage" />
-                    <p>{ad.name}</p>
+                    <h2>{ad.name}</h2>
                     <p>{ad.price}</p>
                     <p>{ad.type}</p>
                     <p>{ad.description}</p>

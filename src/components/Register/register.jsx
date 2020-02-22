@@ -33,7 +33,6 @@ export default class Register extends Component {
     event.preventDefault();
     const { userInput, passInput } = this.state;
     const isRegistered = await register(userInput, passInput);
-    console.log(isRegistered);
 
     if (isRegistered === true) {
       this.props.history.push('/login');
@@ -43,6 +42,11 @@ export default class Register extends Component {
       })
     }
 
+
+
+  }
+  goToLogin = () => {
+    this.props.history.push('/login');
   }
 
   render() {
@@ -55,6 +59,7 @@ export default class Register extends Component {
           <input type="text" onChange={this.userTyping} placeholder="Username.." />
           <input type="password" onChange={this.passTyping} placeholder="Password.." />
           <button type="submit">Registrarse</button>
+          <button onClick={this.goToLogin}>Ya tienes una cuenta?</button>
         </form>
         <p className={this.state.error ? 'user-taken' : 'user'}>Usuario ya registrado,
           intente con otro.</p>
