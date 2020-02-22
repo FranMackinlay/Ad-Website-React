@@ -75,7 +75,7 @@ export default class EditAd extends Component {
           <input onChange={this.handleInput} value={tags} name="tags" type="text" placeholder="Ad Tags" />
           <input onChange={this.handleInput} value={type} name="type" type="text" placeholder="Ad Type" />
           <input onChange={this.handleInput} value={photo} name="photo" type="text" placeholder="Ad Photo" />
-          <button type="submit">Crear Anuncio</button>
+          <button type="submit">Editar Anuncio</button>
         </form>
       </div>
 
