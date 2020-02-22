@@ -35,21 +35,24 @@ export default class adDetail extends Component {
     const { ad } = this.state;
 
     return (
-      <div className="detail-container">
-        <h1>{ad.name}</h1>
-        <p>Price: {ad.price}</p>
-        <p>Type: {ad.type}</p>
-        <p>Description: {ad.description}</p>
-        <img src={ad.photo} alt="AdImage" />
-        <br />
-        <Link to={`/editAd/id=${ad._id}`}>
-          <button>Editar Anuncio</button>
-        </Link>
-        <br />
+      <div>
         <Link to="/anuncios">
           <button>Atras</button>
         </Link>
-      </div >
+        <div className="detail-container">
+          <h1>{ad.name}</h1>
+          <p>Price: {ad.price}</p>
+          <p>Type: {ad.type}</p>
+          <p>Description: {ad.description}</p>
+          <img src={ad.photo} alt="AdImage" />
+          <br />
+          <Link to={`/editAd/id=${ad._id}`}>
+            <button>Editar Anuncio</button>
+          </Link>
+          <br />
+
+        </div >
+      </div>
     )
   }
 }

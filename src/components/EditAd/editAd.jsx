@@ -24,12 +24,12 @@ export default class EditAd extends Component {
     const detailAd = await getAdDetail(id);
     console.log(detailAd);
     this.setState({
-      name: detailAd.name,
-      price: detailAd.price,
-      description: detailAd.description,
-      tags: detailAd.tags,
-      type: detailAd.type,
-      photo: detailAd.photo,
+      name: detailAd.result.name,
+      price: detailAd.result.price,
+      description: detailAd.result.description,
+      tags: detailAd.result.tags,
+      type: detailAd.result.type,
+      photo: detailAd.result.photo,
     })
     return detailAd;
   }

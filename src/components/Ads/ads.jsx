@@ -106,7 +106,7 @@ export default class Ads extends Component {
       return (
         <div>
           <Link to="/login">
-            <button>Log Out</button>
+            <button className="log-out">Log Out</button>
           </Link>
           <h1>Anuncios</h1>
           <Link to="/createAd">
@@ -130,10 +130,16 @@ export default class Ads extends Component {
                 <Link to={`/anuncios/${ad._id}`}>
                   <li key={ad._id}>
                     <img src={ad.photo} alt="AdImage" />
+                    <br />
+                    <Link to={`/editAd/id=${ad._id}`}>
+                      <button className="edit-btn">Editar Anuncio</button>
+                    </Link>
+
                     <h2>{ad.name}</h2>
-                    <p>{ad.price}</p>
-                    <p>{ad.type}</p>
+                    <p>Precio: {ad.price}</p>
+                    <p>Tipo: {ad.type}</p>
                     <p>{ad.description}</p>
+
                   </li>
 
                 </Link>
@@ -147,7 +153,7 @@ export default class Ads extends Component {
       return (
         <div>
           <Link to="/login">
-            <button>Log Out</button>
+            <button className="log-out">Log Out</button>
           </Link>
           <h1>Anuncios</h1>
           <Link to="/createAd">
@@ -171,9 +177,13 @@ export default class Ads extends Component {
                 <Link to={`/detail/${ad._id}`}>
                   <li key={ad._id}>
                     <img src={ad.photo} alt="AdImage" />
+                    <br />
+                    <Link to={`/editAd/id=${ad._id}`}>
+                      <button className="edit-btn">Editar Anuncio</button>
+                    </Link>
                     <h2>{ad.name}</h2>
-                    <p>{ad.price}</p>
-                    <p>{ad.type}</p>
+                    <p>Precio: {ad.price}</p>
+                    <p>Tipo: {ad.type}</p>
                     <p>{ad.description}</p>
                   </li>
                 </Link>
