@@ -138,7 +138,12 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isCreateAdOk = await response.json();
-        console.log(isCreateAdOk);
+        const { success, error, results } = isCreateAdOk;
+        if (success) {
+          return success;
+        } else if (error) {
+          return error;
+        }
 
 
       } catch (err) {

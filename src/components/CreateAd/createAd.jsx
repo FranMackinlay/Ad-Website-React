@@ -39,7 +39,12 @@ export default class CreateAd extends Component {
     event.preventDefault();
     console.log(this.state);
     const { name, price, description, tags, type, photo } = this.state;
-    await createAd(name, price, description, tags, type, photo);
+    const isAdCreated = await createAd(name, price, description, tags, type, photo);
+    if (isAdCreated) {
+      this.props.history.push('/anuncios');
+    } else {
+      alert('No se ha podido crear el anuncio, intente nuevamente');
+    }
   }
 
   render() {
