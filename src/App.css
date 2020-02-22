@@ -11,6 +11,15 @@ form {
   width: 35%;
   margin: 50px auto;
 }
+.ads-form {
+  display: flex;
+  width: 35%;
+  margin: 0 auto;
+  margin-top: 100px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 .registration, .login {
   text-align: center;
   background-color: grey;
@@ -20,9 +29,12 @@ form {
 }
 input {
   margin: 10px;
+  border-radius: 10px;
 }
 button {
   margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
 }
 ul {
   text-align: center;
@@ -54,5 +66,26 @@ body {
 }
 .detail-container {
   text-align: center;
+}
+a {
+  text-decoration: none;
+  color: darkred;
+}
+.create-ad {
+  position: absolute;
+  right: 20px;
+  margin-top: 80px;
+  padding: 10px;
+}
+.select-form, .input-form, .search-form, .reset-form {
+  max-width: 100px;
+  min-height: 19px;
+}
+.search-form, .reset-form {
+  min-width: 75px;
+}
+.select-form {
+  height: 24px;
+  margin: 10px;
 }
 

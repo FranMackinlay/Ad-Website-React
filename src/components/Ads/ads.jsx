@@ -85,16 +85,17 @@ export default class Ads extends Component {
           <Link to="/createAd">
             <button className="create-ad">Crear Anuncio</button>
           </Link>
-          <form onSubmit={this.onSubmit}>
-            <select name="" id="" onChange={this.onSelect}>
+          <form className="ads-form" onSubmit={this.onSubmit}>
+            <select className="select-form" name="" id="" onChange={this.onSelect}>
               {filterParams.map(param => {
                 return <option value={param.id}>{param.param}</option>
               })}
             </select>
-            <input onChange={this.onType} type="text" />
-            <button type="submit">Buscar</button>
+            <input className="input-form" onChange={this.onType} type="text" />
+            <button className="search-form" type="submit">Buscar</button>
+            <button className="reset-form" onClick={this.onResetFilter}>Eliminar Filtro</button>
           </form>
-          <button onClick={this.onResetFilter}>Eliminar Filtro</button>
+
           <ul>
 
             {adsList.map(ad => {
@@ -102,7 +103,7 @@ export default class Ads extends Component {
                 <Link to={`/detail/${ad._id}`}>
                   <li key={ad._id}>
                     <img src={ad.photo} alt="AdImage" />
-                    <p>{ad.name}</p>
+                    <h2>{ad.name}</h2>
                     <p>{ad.price}</p>
                     <p>{ad.type}</p>
                     <p>{ad.description}</p>
@@ -121,16 +122,17 @@ export default class Ads extends Component {
           <Link to="/createAd">
             <button className="create-ad">Crear Anuncio</button>
           </Link>
-          <form onSubmit={this.onSubmit}>
-            <select name="" id="" onChange={this.onSelect}>
+          <form className="ads-form" onSubmit={this.onSubmit}>
+            <select className="select-form" name="" id="" onChange={this.onSelect}>
               {filterParams.map(param => {
                 return <option value={param.id}>{param.param}</option>
               })}
             </select>
-            <input onChange={this.onType} type="text" />
-            <button type="submit">Buscar</button>
+            <input className="input-form" onChange={this.onType} type="text" />
+            <button className="search-form" type="submit">Buscar</button>
+            <button className="reset-form" onClick={this.onResetFilter}>Eliminar Filtro</button>
           </form>
-          <button onClick={this.onResetFilter}>Eliminar Filtro</button>
+
           <ul>
 
             {filteredAdsList.map(ad => {
