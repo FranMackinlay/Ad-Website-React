@@ -12,7 +12,7 @@ const filterParams = [
     param: 'Descripcion'
   },
   {
-    id: 'type',
+    id: 'venta',
     param: 'Tipo'
   },
   {
