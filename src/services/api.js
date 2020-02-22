@@ -2,6 +2,7 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
   const registerApiEndpoint = `${API_URL}/apiv1/register`;
   const loginApiEndpoint = `${API_URL}/apiv1/login`;
   const adsApiEndpoint = `${API_URL}/apiv1/anuncios`;
+  const editAdApiEndpoint = `${API_URL}/apiv1/anuncios?id=`;
   return {
     register: async (username, password) => {
       try {
@@ -107,6 +108,7 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isFilterAdOk = await response.json();
+        console.log(isFilterAdOk);
         const { success, error, results } = isFilterAdOk;
         if (success) {
           return results;
@@ -121,7 +123,6 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
     },
     createAd: async (name, price, description, tags, type, photo) => {
       try {
-        console.log(tags);
         const response = await fetch(`${adsApiEndpoint}`, {
           method: 'POST',
           body: JSON.stringify({
@@ -138,12 +139,41 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isCreateAdOk = await response.json();
-        const { success, error, results } = isCreateAdOk;
+        const { success, error } = isCreateAdOk;
         if (success) {
           return success;
         } else if (error) {
           return error;
         }
+
+
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    editAd: async (id, name, price, description, tags, type, photo) => {
+      try {
+        console.log(`${editAdApiEndpoint}${id}`);
+        const response = await fetch(`${editAdApiEndpoint}${id}`, {
+          method: 'PUT',
+          body: JSON.stringify({
+            name: `${name}`,
+            price: price,
+            description: `${description}`,
+            tags: tags,
+            type: `${type}`,
+            photo: `${photo}`
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        });
+        console.log(response);
+        const isEditAdOk = await response.json();
+        console.log(isEditAdOk);
+        // const { success, error } = isEditAdOk;
+        return isEditAdOk;
 
 
       } catch (err) {
