@@ -3,8 +3,6 @@ import api from '../../services/api';
 
 const { createAd } = api();
 
-const tagsArray = [];
-
 export default class CreateAd extends Component {
   constructor(props) {
     super(props);
@@ -40,8 +38,8 @@ export default class CreateAd extends Component {
   onSubmit = async event => {
     event.preventDefault();
     console.log(this.state);
-    const { name, price, description, type, photo } = this.state;
-    await createAd(name, price, description, type, photo);
+    const { name, price, description, tags, type, photo } = this.state;
+    await createAd(name, price, description, tags, type, photo);
   }
 
   render() {

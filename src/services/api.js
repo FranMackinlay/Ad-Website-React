@@ -119,14 +119,16 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
         console.error(err);
       }
     },
-    createAd: async (name, price, description, type, photo) => {
+    createAd: async (name, price, description, tags, type, photo) => {
       try {
+        console.log(tags);
         const response = await fetch(`${adsApiEndpoint}`, {
           method: 'POST',
           body: JSON.stringify({
             name: `${name}`,
             price: price,
             description: `${description}`,
+            tags: tags,
             type: `${type}`,
             photo: `${photo}`
           }),
