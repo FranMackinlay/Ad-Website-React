@@ -2,7 +2,7 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
   const registerApiEndpoint = `${API_URL}/apiv1/register`;
   const loginApiEndpoint = `${API_URL}/apiv1/login`;
   const adsApiEndpoint = `${API_URL}/apiv1/anuncios`;
-  const editAdApiEndpoint = `${API_URL}/apiv1/anuncios?id=`;
+  const editAdApiEndpoint = `${API_URL}/apiv1/anuncios/`;
   return {
     register: async (username, password) => {
       try {
@@ -108,7 +108,7 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           method: 'POST',
           body: JSON.stringify({
             name: `${name}`,
-            price: price,
+            price: parseInt(price),
             description: `${description}`,
             tags: tags,
             type: `${type}`,
@@ -135,7 +135,7 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           method: 'PUT',
           body: JSON.stringify({
             name: `${name}`,
-            price: price,
+            price: parseInt(price),
             description: `${description}`,
             tags: tags,
             type: `${type}`,

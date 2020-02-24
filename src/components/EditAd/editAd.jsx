@@ -22,7 +22,6 @@ export default class EditAd extends Component {
 
   getDetailAd = async (id) => {
     const detailAd = await getAdDetail(id);
-    console.log(detailAd);
     this.setState({
       name: detailAd.result.name,
       price: detailAd.result.price,
