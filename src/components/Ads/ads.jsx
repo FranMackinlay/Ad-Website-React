@@ -76,7 +76,8 @@ export default class Ads extends Component {
     if (adsWithFilter.error) {
       alert('Por favor ingrese un valor para filtrar.');
     } else {
-      adsWithFilter.map(adFiltered => {
+      console.log(adsWithFilter);
+      adsWithFilter.results.map(adFiltered => {
         filteredAdsArray.push(adFiltered);
       });
       this.setState({
