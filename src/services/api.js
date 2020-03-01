@@ -37,13 +37,11 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
             'Content-type': 'application/json'
           },
           credentials: 'include'
-        })
-        console.log(response);
+        });
 
 
         const isLoginSuccesfull = await response.json();
 
-        console.log(isLoginSuccesfull);
 
         return isLoginSuccesfull;
 
@@ -104,6 +102,7 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
     },
     createAd: async (name, price, description, tags, type, photo) => {
       try {
+        console.log(name, price, description, tags, type, photo);
         const response = await fetch(`${adsApiEndpoint}`, {
           method: 'POST',
           body: JSON.stringify({
@@ -120,7 +119,6 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isCreateAdOk = await response.json();
-
         return isCreateAdOk;
 
 
@@ -130,7 +128,6 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
     },
     editAd: async (id, name, price, description, tags, type, photo) => {
       try {
-        console.log(`${editAdApiEndpoint}${id}`);
         const response = await fetch(`${editAdApiEndpoint}${id}`, {
           method: 'PUT',
           body: JSON.stringify({
@@ -146,7 +143,6 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           },
           credentials: 'include'
         });
-        console.log(response);
         const isEditAdOk = await response.json();
 
         return isEditAdOk;

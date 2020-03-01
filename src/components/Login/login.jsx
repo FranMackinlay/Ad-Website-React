@@ -31,6 +31,7 @@ export default class Register extends Component {
 
     if (isLoginOk.error) {
       alert(isLoginOk.error);
+      this.props.history.push('/register');
     } else {
       this.props.history.push('/anuncios');
     }

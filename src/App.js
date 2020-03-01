@@ -21,7 +21,7 @@ export default class App extends Component {
           <Route exact path="/anuncios/:_id" component={adDetail} />
           <Route path="/anuncios" component={Ads} />
           <Route path="/createAd" component={CreateAd} />
-          <Route to="/register" />
+          <Route to="/register" component={Register} />
         </Switch>
 
       </Router>

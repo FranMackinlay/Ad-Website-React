@@ -17,7 +17,6 @@ export default class EditAd extends Component {
     }
     const id = this.props.match.params._id;
     this.getDetailAd(id);
-    console.log('EditAd');
   }
 
   getDetailAd = async (id) => {
@@ -55,7 +54,6 @@ export default class EditAd extends Component {
     event.preventDefault();
     const { name, price, description, tags, type, photo } = this.state;
     const isAdEdited = await editAd(this.props.match.params._id, name, price, description, tags, type, photo);
-    console.log(isAdEdited);
     if (isAdEdited.error) {
       alert('No se ha podido editar el anuncio, intente nuevamente');
     } else {
