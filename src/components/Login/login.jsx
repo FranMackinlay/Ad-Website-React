@@ -50,8 +50,8 @@ export default class Register extends Component {
         <form onSubmit={this.onSubmit}>
           <input type="text" onChange={this.userTyping} placeholder="Username.." required />
           <input type="password" onChange={this.passTyping} placeholder="Password.." required />
-          <button type="submit">Iniciar Sesion</button>
-          <button className="create-account" onClick={this.goToRegistration}>No tienes una cuenta?</button>
+          <button type="submit">Log In</button>
+          <button className="create-account" onClick={this.goToRegistration}>Don't have an account?</button>
         </form>
       </div>
     )

@@ -3,7 +3,7 @@ body {
   padding: 0;
   background-color: #28262C;
 }
-.login {
+.registration {
   text-align: center;
   background-color: #505168;
   border-radius: 10px;
@@ -15,12 +15,12 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.login h1 {
+.registration h1 {
   color: white;
   font-weight: 500;
 }
 
-.login input[type = "text"], input[type = "password"] {
+.registration input[type = "text"], input[type = "password"] {
   background: none;
   display: block;
   margin: 20px auto;
@@ -34,12 +34,12 @@ body {
   transition: .25s;
 }
 
-.login input[type = "text"]:focus, input[type = "password"]:focus {
+.registration input[type = "text"]:focus, input[type = "password"]:focus {
   width: 240px;
   border-color: #2ecc71;
 }
 
-.login button[type = "submit"] {
+.registration button[type = "submit"] {
   background: none;
   display: block;
   margin: 20px auto;
@@ -53,10 +53,18 @@ body {
   cursor: pointer;
   min-width: 140px;
 }
-.login button[type = "submit"]:hover {
+.registration button[type = "submit"]:hover {
   background-color: #2ecc71;
 }
-.create-account {
+
+.user {
+  display: none;
+}
+.user-taken {
+  color: darkblue;
+}
+
+.has-account {
   background: none;
   border: none;
   color: darkgray;
