@@ -65,7 +65,7 @@ ul {
 }
 li {
   border: solid 2px #2ecc71;;
-  background-color: lightslategrey;
+  background-color: transparent;
   border-radius: 160px;
   width: 350px;
   height: 350px;
@@ -74,7 +74,7 @@ li {
   transition: 0.25s;
 }
 li:hover {
-  background-color: gray;
+  background-color: lightslategray;
   color: whitesmoke;
   border-radius: 10px;
   transition: 0.25s;
@@ -103,11 +103,26 @@ p {
 }
 .select-form, .input-form, .search-form, .reset-form {
   margin: 5px;
+  border-radius: 20px;
+  height: 25px;
+  border: 1px solid darkorange;
+  background-color: darkgrey;
+  color: black;
+  cursor: pointer;
+  opacity: .8;
+  transition: .25s;
+  width: 100px;
+  margin: 10px;
+  transition: .25s;
+}
+.select-form:hover, .input-form:hover, .search-form:hover, .reset-form:hover {
+  background-color: rgb(255, 210, 126);
+  transition: .25s;
 }
 .input-form {
   border-radius: 10px;
   border: none;
-  height: 15px;
+  background-color: aliceblue;
 }
 .price-type {
   display: flex;
@@ -118,6 +133,23 @@ p {
 }
 .edit-btn {
   margin-top: 40px;
+  margin: 5px;
+  border-radius: 20px;
+  height: 25px;
+  border: 1px solid darkorange;
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+  opacity: .8;
+  transition: .25s;
+  width: 100px;
+  margin: 10px;
+  outline: black;
+  transition: .25s;
+}
+.edit-btn:hover {
+  background-color: darkorange;
+  transition: .25s;
 }
 
 @media (max-width: 400px) {

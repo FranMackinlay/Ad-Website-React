@@ -112,7 +112,7 @@ export default class Ads extends Component {
           <Link to="/login" className="log-out-container">
             <button className="log-out">Log Out</button>
           </Link>
-          <h1>Anuncios</h1>
+          <h1>General Ads</h1>
           <Link to="/createAd">
             <button className="create-ad">Crear Anuncio</button>
           </Link>
@@ -162,9 +162,9 @@ export default class Ads extends Component {
           <Link to="/login">
             <button className="log-out">Log Out</button>
           </Link>
-          <h1>Anuncios</h1>
+          <h1>General Ads</h1>
           <Link to="/createAd">
-            <button className="create-ad">Crear Anuncio</button>
+            <button className="create-ad">Create Ad</button>
           </Link>
           <form className="ads-form" onSubmit={this.onSubmit}>
             <select className="select-form" name="" id="" onChange={this.onSelect}>
@@ -174,7 +174,7 @@ export default class Ads extends Component {
             </select>
             <input className="input-form" onChange={this.onType} type="text" />
             <button className="search-form" type="submit">Buscar</button>
-            <button className="reset-form" onClick={this.onResetFilter}>Eliminar Filtro</button>
+            <button className="reset-form" onClick={this.onResetFilter}>Reset Filter</button>
           </form>
 
           <ul>
@@ -185,13 +185,16 @@ export default class Ads extends Component {
                   <li key={ad._id}>
                     <img src={ad.photo} alt="AdImage" />
                     <br />
-                    <Link to={`/editAd/id=${ad._id}`}>
-                      <button className="edit-btn">Editar Anuncio</button>
-                    </Link>
+
                     <h2>{ad.name}</h2>
-                    <p>Precio: {ad.price}</p>
-                    <p>Tipo: {ad.type}</p>
+                    <div className="price-type">
+                      <p>Price: {ad.price}</p>
+                      <p>Type: {ad.type}</p>
+                    </div>
                     <p>{ad.description}</p>
+                    <Link to={`/editAd/id=${ad._id}`}>
+                      <button className="edit-btn">Edit Ad</button>
+                    </Link>
                   </li>
                 </Link>
               )
