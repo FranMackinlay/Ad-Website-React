@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import api from '../../services/api'
+import api from '../../services/api';
+import './login.css';
 
 const { login } = api();
 
@@ -45,7 +46,7 @@ export default class Register extends Component {
 
     return (
       <div className="login">
-        <h1>Iniciar Sesion</h1>
+        <h1>Login</h1>
         <form onSubmit={this.onSubmit}>
           <input type="text" onChange={this.userTyping} placeholder="Username.." />
           <input type="password" onChange={this.passTyping} placeholder="Password.." />
