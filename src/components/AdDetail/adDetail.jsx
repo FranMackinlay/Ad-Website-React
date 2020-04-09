@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import { Link } from "react-router-dom";
+import './adDetail.css';
 
 const { getAdDetail } = api();
 
@@ -36,18 +37,20 @@ export default class adDetail extends Component {
 
     return (
       <div>
-        <Link to="/anuncios">
-          <button>Atras</button>
+        <Link className="back-to-ads" to="/anuncios">
+          <button className="back-btn">Atras</button>
         </Link>
         <div className="detail-container">
+          <img className="detail-image" src={ad.photo} alt="AdImage" />
           <h1>{ad.name}</h1>
-          <p>Price: {ad.price}</p>
-          <p>Type: {ad.type}</p>
+          <div className="price-type">
+            <p>Price: {ad.price}</p>
+            <p>Type: {ad.type}</p>
+          </div>
           <p>Description: {ad.description}</p>
-          <img src={ad.photo} alt="AdImage" />
           <br />
           <Link to={`/editAd/id=${ad._id}`}>
-            <button>Editar Anuncio</button>
+            <button className="edit-ad">Editar Anuncio</button>
           </Link>
           <br />
 
