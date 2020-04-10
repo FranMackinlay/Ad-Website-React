@@ -108,7 +108,7 @@ export default class Ads extends Component {
 
     if (filteredAdsList === null) {
       return (
-        <div>
+        <div className="content-container">
           <Link to="/login" className="log-out-container">
             <button className="log-out">Log Out</button>
           </Link>
@@ -124,7 +124,7 @@ export default class Ads extends Component {
             </select>
             <input className="input-form" onChange={this.onType} type="text" />
             <button className="search-form" type="submit">Buscar</button>
-            <button className="reset-form" onClick={this.onResetFilter}>Eliminar Filtro</button>
+            <button className="reset-form" onClick={this.onResetFilter}>Reset</button>
           </form>
 
           <ul>
@@ -174,7 +174,7 @@ export default class Ads extends Component {
             </select>
             <input className="input-form" onChange={this.onType} type="text" />
             <button className="search-form" type="submit">Buscar</button>
-            <button className="reset-form" onClick={this.onResetFilter}>Reset Filter</button>
+            <button className="reset-form" onClick={this.onResetFilter}>Reset</button>
           </form>
 
           <ul>

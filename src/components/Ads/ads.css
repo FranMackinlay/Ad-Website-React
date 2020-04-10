@@ -1,3 +1,6 @@
+.content-container {
+  width: 100vw;
+}
 .ads-form {
   display: flex;
   margin: 30px auto;
@@ -153,13 +156,16 @@ p {
 }
 
 @media (max-width: 400px) {
+  .content-container {
+    width: fit-content;
+  }
   .ads-form {
     width: 290px;
     padding: 0;
     justify-content: space-around;
   }
   .select-form, .input-form, .search-form, .reset-form {
-    margin: 0;
+    margin: 3px;
   }
   .select-form {
     width: 70px;
@@ -176,6 +182,6 @@ p {
 @media (max-width: 715px) {
 .create-ad {
     top: 10px;
-    right: 10px;
+    right: -20px;
   }
 }

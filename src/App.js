@@ -6,7 +6,7 @@ import Ads from './components/Ads/ads';
 import adDetail from './components/AdDetail/adDetail';
 import CreateAd from './components/CreateAd/createAd';
 import EditAd from './components/EditAd/editAd';
-// import './App.css';
+import './App.css';
 
 export default class App extends Component {
   render() {
