@@ -50,7 +50,7 @@ div[class^="edit"] input {
   border-radius: 24px;
   transition: .25s;
 }    
-input:focus {
+div[class^="edit"] input:focus {
   width: 150px;
   border-color: #2ecc71;
 }        
