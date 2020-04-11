@@ -10,7 +10,8 @@ export default class adDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ad: {}
+      ad: {},
+      tags: []
     }
     const id = this.props.match.params._id;
     this.getDetailAd(id);
@@ -24,7 +25,8 @@ export default class adDetail extends Component {
       this.props.history.push('/anuncios');
     } else {
       this.setState({
-        ad: detailAd.result
+        ad: detailAd.result,
+        tags: detailAd.result.tags
       })
       return detailAd.result;
     }
@@ -33,7 +35,16 @@ export default class adDetail extends Component {
 
 
   render() {
-    const { ad } = this.state;
+    const { ad, tags } = this.state;
+
+    const adTagsArray = tags.toString();
+
+    const adTags = adTagsArray.replace(/,/g, ' - ');
+    console.log(typeof adTagsArray);
+
+    // console.log(ad.tags[0]);
+    // const tags = ad.tags.replace(',', ' ');
+    // console.log(tags)
 
     return (
       <div>
@@ -48,6 +59,7 @@ export default class adDetail extends Component {
             <p>Type: {ad.type}</p>
           </div>
           <p>Description: {ad.description}</p>
+          <p>Tags: {adTags}</p>
           <br />
           <Link to={`/editAd/id=${ad._id}`}>
             <button className="edit-ad">Editar Anuncio</button>

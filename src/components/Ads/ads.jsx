@@ -114,7 +114,7 @@ export default class Ads extends Component {
           </Link>
           <h1>General Ads</h1>
           <Link to="/createAd">
-            <button className="create-ad">Crear Anuncio</button>
+            <button className="create-ad">Create Ad</button>
           </Link>
           <form className="ads-form" onSubmit={this.onSubmit}>
             <select className="select-form" name="" id="" onChange={this.onSelect}>
@@ -123,7 +123,7 @@ export default class Ads extends Component {
               })}
             </select>
             <input className="input-form" onChange={this.onType} type="text" />
-            <button className="search-form" type="submit">Buscar</button>
+            <button className="search-form" type="submit">Search</button>
             <button className="reset-form" onClick={this.onResetFilter}>Reset</button>
           </form>
 

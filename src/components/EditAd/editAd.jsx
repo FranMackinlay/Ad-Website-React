@@ -67,7 +67,7 @@ export default class EditAd extends Component {
     return (
       <div>
         <Link className="back-to-ads" to="/anuncios">
-          <button className="back-btn">Atras</button>
+          <button className="back-btn">Back</button>
         </Link>
         <h1>Ad to be edited: "{name}"</h1>
         <form className="edit-ad-form" onSubmit={this.onSubmit}>
