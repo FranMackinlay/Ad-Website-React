@@ -106,37 +106,34 @@ export default class Ads extends Component {
     this.fetchAds();
     const { adsList, filteredAdsList } = this.state;
 
-    if (filteredAdsList === null) {
-      return (
-        <div className="content-container">
-          <Link to="/login" className="log-out-container">
-            <button className="log-out">Log Out</button>
-          </Link>
-          <h1>General Ads</h1>
-          <Link to="/createAd">
-            <button className="create-ad">Create Ad</button>
-          </Link>
-          <form className="ads-form" onSubmit={this.onSubmit}>
-            <select className="select-form" name="" id="" onChange={this.onSelect}>
-              {filterParams.map(param => {
-                return <option value={param.id}>{param.param}</option>
-              })}
-            </select>
-            <input className="input-form" onChange={this.onType} type="text" />
-            <button className="search-form" type="submit">Search</button>
-            <button className="reset-form" onClick={this.onResetFilter}>Reset</button>
-          </form>
+    return (
+      <div className="content-container">
+        <Link to="/login" className="log-out-container">
+          <button className="log-out">Log Out</button>
+        </Link>
+        <h1>General Ads</h1>
+        <Link to="/createAd">
+          <button className="create-ad">Create Ad</button>
+        </Link>
+        <form className="ads-form" onSubmit={this.onSubmit}>
+          <select className="select-form" name="" id="" onChange={this.onSelect}>
+            {filterParams.map(param => {
+              return <option value={param.id}>{param.param}</option>
+            })}
+          </select>
+          <input className="input-form" onChange={this.onType} type="text" />
+          <button className="search-form" type="submit">Search</button>
+          <button className="reset-form" onClick={this.onResetFilter}>Reset</button>
+        </form>
 
-          <ul>
-
-            {adsList.map(ad => {
+        <ul>
+          {filteredAdsList === null ? (
+            adsList.map(ad => {
               return (
-                <Link to={`/anuncios/${ad._id}`}>
-                  <li key={ad._id}>
+                <Link key={ad._id} to={`/anuncios/${ad._id}`}>
+                  <li>
                     <img src={ad.photo} alt="AdImage" />
                     <br />
-
-
                     <h2>{ad.name}</h2>
                     <div className="price-type">
                       <p>Price: {ad.price}</p>
@@ -146,66 +143,35 @@ export default class Ads extends Component {
                     <Link to={`/editAd/id=${ad._id}`}>
                       <button className="edit-btn">Edit Ad</button>
                     </Link>
-
-                  </li>
-
-                </Link>
-              )
-            }
-            )}
-          </ul>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <Link to="/login">
-            <button className="log-out">Log Out</button>
-          </Link>
-          <h1>General Ads</h1>
-          <Link to="/createAd">
-            <button className="create-ad">Create Ad</button>
-          </Link>
-          <form className="ads-form" onSubmit={this.onSubmit}>
-            <select className="select-form" name="" id="" onChange={this.onSelect}>
-              {filterParams.map(param => {
-                return <option value={param.id}>{param.param}</option>
-              })}
-            </select>
-            <input className="input-form" onChange={this.onType} type="text" />
-            <button className="search-form" type="submit">Buscar</button>
-            <button className="reset-form" onClick={this.onResetFilter}>Reset</button>
-          </form>
-
-          <ul>
-
-            {filteredAdsList.map(ad => {
-              return (
-                <Link to={`/detail/${ad._id}`}>
-                  <li key={ad._id}>
-                    <img src={ad.photo} alt="AdImage" />
-                    <br />
-
-                    <h2>{ad.name}</h2>
-                    <div className="price-type">
-                      <p>Price: {ad.price}</p>
-                      <p>Type: {ad.type}</p>
-                    </div>
-                    <p>{ad.description}</p>
-                    <Link to={`/editAd/id=${ad._id}`}>
-                      <button className="edit-btn">Edit Ad</button>
-                    </Link>
                   </li>
                 </Link>
               )
-            }
-            )}
-          </ul>
-        </div>
-      )
-    }
+            })
+          ) : (
+              filteredAdsList.map(ad => {
+                return (
+                  <Link to={`/detail/${ad._id}`}>
+                    <li key={ad._id}>
+                      <img src={ad.photo} alt="AdImage" />
+                      <br />
 
+                      <h2>{ad.name}</h2>
+                      <div className="price-type">
+                        <p>Price: {ad.price}</p>
+                        <p>Type: {ad.type}</p>
+                      </div>
+                      <p>{ad.description}</p>
+                      <Link to={`/editAd/id=${ad._id}`}>
+                        <button className="edit-btn">Edit Ad</button>
+                      </Link>
+                    </li>
+                  </Link>
+                )
+              })
+            )
+          }
+        </ul>
+      </div>
+    )
   }
-
-
 }
