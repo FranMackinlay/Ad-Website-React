@@ -108,8 +108,12 @@ export default class Ads extends Component {
 				<Header />
 				<form className='ads-form' onSubmit={this.onSubmit}>
 					<select className='select-form' onChange={this.onSelect}>
-						{filterParams.map(param => {
-							return <option value={param.id}>{param.param}</option>;
+						{filterParams.map(({ id, param }) => {
+							return (
+								<option key={id} value={id}>
+									{param}
+								</option>
+							);
 						})}
 					</select>
 					<input className='input-form' onChange={this.onType} type='text' />

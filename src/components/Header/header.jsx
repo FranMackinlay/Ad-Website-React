@@ -8,9 +8,9 @@ export default function Header() {
 			<Link to='/login' className='log-out-container'>
 				<button className='log-out'>Log Out</button>
 			</Link>
-			<div class='main-container'>
-				<div class='first-container share'>
-					<h1 class='title'>
+			<div className='main-container'>
+				<div className='first-container share'>
+					<h1 className='title'>
 						<span id='one'>R</span>
 						<span>e</span>
 						<span>a</span>
