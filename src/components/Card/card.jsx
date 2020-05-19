@@ -1,0 +1,22 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+export default function Card({ ad }) {
+	return (
+		<Link key={ad._id} to={`/anuncios/${ad._id}`}>
+			<li>
+				<img src={ad.photo} alt='AdImage' />
+				<br />
+				<h2>{ad.name}</h2>
+				<div className='price-type'>
+					<p>Price: {ad.price}</p>
+					<p>Type: {ad.type}</p>
+				</div>
+				<p className='description'>{ad.description}</p>
+				<Link to={`/editAd/id=${ad._id}`}>
+					<button className='edit-btn'>Edit Ad</button>
+				</Link>
+			</li>
+		</Link>
+	);
+}
