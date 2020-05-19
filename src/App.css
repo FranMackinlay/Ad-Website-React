@@ -1,5 +1,7 @@
 body {
-  background-color: #28262C;
-  color: white;
-  /* min-width: 320px; */
+	background: url('./assets/images/background.jpg');
+	color: white;
+	background-repeat: no-repeat;
+	background-size: auto;
+	position: fixed;
 }
