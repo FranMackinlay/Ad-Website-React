@@ -1,0 +1,82 @@
+li {
+	border: solid 2px #2ecc71;
+	background-color: transparent;
+	border-radius: 160px;
+	width: 350px;
+	height: 350px;
+	margin: 10px;
+	text-align: center;
+	transition: 0.25s;
+	max-width: 300px;
+}
+li:hover {
+	background-color: lightslategray;
+	color: whitesmoke;
+	border-radius: 10px;
+	transition: 0.25s;
+	clip-path: none;
+}
+img {
+	max-height: 145px;
+	margin: 20px 20px 10px 20px;
+	border-radius: inherit;
+	max-width: 250px;
+	min-height: 150px;
+}
+h1 {
+	text-align: center;
+	color: whitesmoke;
+}
+h2 {
+	margin: 0;
+}
+h2,
+p,
+a {
+	color: black;
+	text-decoration: none;
+}
+p {
+	margin: 10px;
+}
+.price-type {
+	display: flex;
+	justify-content: space-around;
+}
+.description {
+	max-height: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 50%;
+	margin: 0 auto;
+}
+.edit-link {
+	width: fit-content;
+	margin: 0 auto;
+}
+.edit-btn {
+	margin-top: 40px;
+	margin: 5px;
+	border-radius: 20px;
+	height: 25px;
+	border: 1px solid darkorange;
+	background-color: transparent;
+	color: black;
+	cursor: pointer;
+	opacity: 0.8;
+	transition: 0.25s;
+	width: 100px;
+	margin: 10px;
+	outline: black;
+	transition: 0.25s;
+}
+.edit-btn:hover {
+	background-color: darkorange;
+	transition: 0.25s;
+}
+@media (max-width: 400px) {
+	li {
+		width: 290px;
+	}
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
+import Header from '../Header/header';
 import filterParams from '../../const/filterParams';
 import Card from '../Card/card';
 import './ads.css';
@@ -23,23 +23,21 @@ export default class Ads extends Component {
 			filterSelect: filterParams[0].id,
 			filteredAdsList: null,
 		};
-		this.fetchAds();
 	}
 
-	fetchAds = async () => {
+	componentDidMount() {
 		this.getAdsList();
-	};
+	}
 
 	getAdsList = async () => {
 		const ads = await getAds();
 		if (ads.error) {
 			alert('No se ha encontrado la lista de anuncios');
-			this.props.history.push('/login');
+			return this.props.history.push('/login');
 		} else {
-			this.setState({
+			return this.setState({
 				adsList: ads.results,
 			});
-			return ads.results;
 		}
 	};
 
@@ -76,7 +74,7 @@ export default class Ads extends Component {
 		this.onResetFilter();
 		const adsWithFilter = await this.filterAds(`${this.state.filterSelect}`, `${this.state.filterInput}`);
 		if (adsWithFilter.error) {
-			alert('Por favor ingrese un valor para filtrar.');
+			alert('Please type a valid filter');
 		} else {
 			adsWithFilter.results.map(adFiltered => {
 				return filteredAdsArray.push(adFiltered);
@@ -98,21 +96,18 @@ export default class Ads extends Component {
 		filteredAdsArray = [];
 	};
 
-	render() {
-		this.fetchAds();
-		const { adsList, filteredAdsList } = this.state;
+	renderAdList = adsList => adsList.map(ad => <Card key={ad._id} ad={ad} />);
 
+	renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <Card key={ad._id} ad={ad} />);
+
+	render() {
+		const { adsList, filteredAdsList } = this.state;
+		if (!adsList) return <h1>Loading Ads...</h1>;
 		return (
 			<div className='content-container'>
-				<Link to='/login' className='log-out-container'>
-					<button className='log-out'>Log Out</button>
-				</Link>
-				<h1>General Ads</h1>
-				<Link to='/createAd'>
-					<button className='create-ad'>Create Ad</button>
-				</Link>
+				<Header />
 				<form className='ads-form' onSubmit={this.onSubmit}>
-					<select className='select-form' name='' id='' onChange={this.onSelect}>
+					<select className='select-form' onChange={this.onSelect}>
 						{filterParams.map(param => {
 							return <option value={param.id}>{param.param}</option>;
 						})}
@@ -125,48 +120,9 @@ export default class Ads extends Component {
 						Reset
 					</button>
 				</form>
-
-				<ul>
-					{filteredAdsList === null
-						? adsList.map(ad => {
-								return <Card ad={ad} />;
-								// <Link key={ad._id} to={`/anuncios/${ad._id}`}>
-								//   <li>
-								//     <img src={ad.photo} alt="AdImage" />
-								//     <br />
-								//     <h2>{ad.name}</h2>
-								//     <div className="price-type">
-								//       <p>Price: {ad.price}</p>
-								//       <p>Type: {ad.type}</p>
-								//     </div>
-								//     <p className="description">{ad.description}</p>
-								//     <Link to={`/editAd/id=${ad._id}`}>
-								//       <button className="edit-btn">Edit Ad</button>
-								//     </Link>
-								//   </li>
-								// </Link>
-						  })
-						: filteredAdsList.map(ad => {
-								return (
-									<Link to={`/detail/${ad._id}`}>
-										<li key={ad._id}>
-											<img src={ad.photo} alt='AdImage' />
-											<br />
-
-											<h2>{ad.name}</h2>
-											<div className='price-type'>
-												<p>Price: {ad.price}</p>
-												<p>Type: {ad.type}</p>
-											</div>
-											<p>{ad.description}</p>
-											<Link to={`/editAd/id=${ad._id}`}>
-												<button className='edit-btn'>Edit Ad</button>
-											</Link>
-										</li>
-									</Link>
-								);
-						  })}
-				</ul>
+				<div className='ads-container'>
+					<ul>{filteredAdsList === null ? this.renderAdList(adsList) : this.renderFilteredAdsList(filteredAdsList)}</ul>
+				</div>
 			</div>
 		);
 	}

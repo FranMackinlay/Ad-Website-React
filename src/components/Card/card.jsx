@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './card.css';
 
 export default function Card({ ad }) {
 	return (
@@ -13,7 +14,7 @@ export default function Card({ ad }) {
 					<p>Type: {ad.type}</p>
 				</div>
 				<p className='description'>{ad.description}</p>
-				<Link to={`/editAd/id=${ad._id}`}>
+				<Link to={`/editAd/id=${ad._id}`} className='edit-link'>
 					<button className='edit-btn'>Edit Ad</button>
 				</Link>
 			</li>
