@@ -3,7 +3,7 @@
 }
 .ads-form {
 	display: flex;
-	margin: 30px auto;
+	margin: 30px auto 0 auto;
 	padding: 10px;
 	flex-direction: row;
 	justify-content: center;
@@ -13,45 +13,7 @@
 	border-radius: 10px;
 	border: 2px solid #3498db;
 }
-.create-ad {
-	border-radius: 20px;
-	position: absolute;
-	right: 40px;
-	height: 40px;
-	top: 107px;
-	border: 1px solid #2ecc71;
-	background-color: #2ecc71;
-	color: white;
-	cursor: pointer;
-	opacity: 0.8;
-	transition: 0.25s;
-	width: 100px;
-}
-.create-ad:hover {
-	width: 140px;
-	opacity: 1;
-	transition: 0.25s;
-}
-.log-out {
-	border-radius: 20px;
-	height: 40px;
-	border: 1px solid darkred;
-	background-color: transparent;
-	color: white;
-	cursor: pointer;
-	opacity: 0.8;
-	transition: 0.25s;
-	width: 100px;
-	margin: 10px;
-}
-.log-out:hover {
-	background-color: darkred;
-	width: 140px;
-}
-.log-out-container {
-	display: flex;
-	justify-content: flex-start;
-}
+
 a {
 	display: flex;
 	justify-content: center;
@@ -66,46 +28,7 @@ ul {
 	/* grid-template-columns: auto auto auto; */
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-li {
-	border: solid 2px #2ecc71;
-	background-color: transparent;
-	border-radius: 160px;
-	width: 350px;
-	height: 350px;
-	margin: 10px;
-	text-align: center;
-	transition: 0.25s;
-}
-li:hover {
-	background-color: lightslategray;
-	color: whitesmoke;
-	border-radius: 10px;
-	transition: 0.25s;
-	clip-path: none;
-}
-img {
-	max-height: 145px;
-	margin: 20px 20px 10px 20px;
-	border-radius: inherit;
-	max-width: 250px;
-	min-height: 150px;
-}
-h1 {
-	text-align: center;
-	color: whitesmoke;
-}
-h2 {
-	margin: 0;
-}
-h2,
-p,
-a {
-	color: whitesmoke;
-	text-decoration: none;
-}
-p {
-	margin: 10px;
-}
+
 .select-form,
 .input-form,
 .search-form,
@@ -135,32 +58,10 @@ p {
 	border: none;
 	background-color: aliceblue;
 }
-.price-type {
-	display: flex;
-	justify-content: space-around;
-}
-.description {
-	max-height: 20px;
-}
-.edit-btn {
-	margin-top: 40px;
-	margin: 5px;
-	border-radius: 20px;
-	height: 25px;
-	border: 1px solid darkorange;
-	background-color: transparent;
-	color: black;
-	cursor: pointer;
-	opacity: 0.8;
-	transition: 0.25s;
-	width: 100px;
-	margin: 10px;
-	outline: black;
-	transition: 0.25s;
-}
-.edit-btn:hover {
-	background-color: darkorange;
-	transition: 0.25s;
+
+.ads-container {
+	overflow: scroll;
+	height: 100vh;
 }
 
 @media (max-width: 400px) {
@@ -183,9 +84,6 @@ p {
 	}
 	.input-form {
 		width: 80px;
-	}
-	li {
-		width: 290px;
 	}
 }
 
