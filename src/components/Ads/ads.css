@@ -3,8 +3,7 @@
 }
 
 a {
-	display: flex;
-	justify-content: center;
+	border-radius: inherit;
 }
 ul {
 	text-align: center;
