@@ -1,57 +1,61 @@
 .back-to-ads {
-  margin: 10px;
-  display: flex;
-  justify-content: flex-start;
+	margin: 10px;
+	display: flex;
+	justify-content: flex-start;
 }
 .back-btn {
-  border-radius: 20px;
-  height: 40px;
-  border: 1px solid #3498db;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  opacity: .8;
-  transition: .25s;
-  width: 100px;
-  margin: 10px;
-  transition: .25s;
+	border-radius: 20px;
+	height: 40px;
+	border: 1px solid #3498db;
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	opacity: 0.8;
+	transition: 0.25s;
+	width: 100px;
+	margin: 10px;
+	transition: 0.25s;
 }
 .back-btn:hover {
-  background-color: #3498db;
-  transition: .25s;
+	background-color: #3498db;
+	transition: 0.25s;
 }
 .detail-container {
-  border: 1px solid #2ecc71;
-  border-radius: 20px;
-  text-align: center;
-  width: fit-content;
-  margin: 0 auto;
+	border: 1px solid #2ecc71;
+	border-radius: 20px;
+	text-align: center;
+	width: fit-content;
+	margin: 0 auto;
 }
 .detail-image {
-  max-height: 50vh;
-  margin: 20px 20px 10px 20px;
-  border-radius: inherit;
-  max-width: unset;
-  min-height: unset;
+	max-height: 30vh;
+	margin: 20px 20px 10px 20px;
+	border-radius: inherit;
+	max-width: unset;
+	min-height: unset;
 }
 .price-type {
-  display: flex;
-  justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
 }
 .edit-ad {
-  border-radius: 20px;
-  height: 40px;
-  border: 1px solid darkorange;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  opacity: .8;
-  transition: .25s;
-  width: 100px;
-  margin: 10px;
-  transition: .25s;
+	border-radius: 20px;
+	height: 40px;
+	border: 1px solid darkorange;
+	background-color: transparent;
+	color: black;
+	cursor: pointer;
+	opacity: 0.8;
+	transition: 0.25s;
+	width: 100px;
+	margin: 10px;
+	transition: 0.25s;
 }
 .edit-ad:hover {
-  background-color: darkorange;
-  transition: .25s;
+	background-color: darkorange;
+	transition: 0.25s;
+}
+
+h1 {
+	color: black;
 }
