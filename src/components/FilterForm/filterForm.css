@@ -5,10 +5,10 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	background-color: grey;
+	background-color: cornsilk;
 	width: fit-content;
 	border-radius: 10px;
-	border: 2px solid #3498db;
+	border: 1px outset orange;
 }
 .select-form,
 .input-form,
@@ -18,7 +18,7 @@
 	border-radius: 20px;
 	height: 25px;
 	border: 1px solid darkorange;
-	background-color: darkgrey;
+	background-color: antiquewhite;
 	color: black;
 	cursor: pointer;
 	opacity: 0.8;
@@ -36,8 +36,10 @@
 }
 .input-form {
 	border-radius: 10px;
-	border: none;
+	border: 1px solid orange;
 	background-color: aliceblue;
+	outline: none;
+	padding: 0px 10px 0px 10px;
 }
 
 @media (max-width: 400px) {

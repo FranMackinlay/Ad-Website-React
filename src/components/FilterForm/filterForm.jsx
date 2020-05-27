@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import filterParams from '../../const/filterParams';
 import './filterForm.css';
 
@@ -43,18 +43,20 @@ export default class FilterForm extends Component {
 		this.props.onResetFilter();
 	};
 
+	renderFilterParams = filterParams => {
+		return filterParams.map(({ id, param }) => (
+			<option key={id} value={id}>
+				{param}
+			</option>
+		));
+	};
+
 	render() {
 		return (
 			<div className='form-container'>
 				<form className='ads-form' onSubmit={this.submit}>
 					<select className='select-form' onChange={this.onSelect}>
-						{filterParams.map(({ id, param }) => {
-							return (
-								<option key={id} value={id}>
-									{param}
-								</option>
-							);
-						})}
+						{this.renderFilterParams(filterParams)};
 					</select>
 					<input className='input-form' onChange={this.onType} type='text' />
 					<button className='search-form' type='submit'>
