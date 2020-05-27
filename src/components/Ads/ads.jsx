@@ -48,7 +48,6 @@ export default class Ads extends Component {
 	onSubmit = async data => {
 		this.onResetFilter();
 		const { filterSelect, filterInput } = data;
-		console.log(filterSelect, filterInput);
 		const adsWithFilter = await this.filterAds(`${filterSelect}`, `${filterInput}`);
 		if (adsWithFilter.error) {
 			alert('Please type a valid filter');
@@ -58,12 +57,9 @@ export default class Ads extends Component {
 				filteredAdsList: filteredAdsArray,
 			});
 		}
-		console.log(data);
 	};
 
 	onResetFilter = event => {
-		console.log('reset filter');
-
 		if (event) {
 			event.preventDefault();
 		}
@@ -79,9 +75,7 @@ export default class Ads extends Component {
 	renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <Card key={ad._id} ad={ad} />);
 
 	render() {
-		console.log('render');
 		const { adsList, filteredAdsList } = this.state;
-		console.log(adsList, filteredAdsList);
 		if (!adsList) return <h1>Loading Ads...</h1>;
 		return (
 			<div className='content-container'>
