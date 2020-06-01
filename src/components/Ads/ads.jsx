@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import api from '../../services/api';
 import Header from '../Header/header';
 
-import Card from '../Card/card';
-import FilterForm from '../FilterForm/filterForm';
+import CardItem from '../Card/CardItem';
+
 import './ads.css';
 
 const { getAds, filterAd } = api();
@@ -48,7 +48,8 @@ export default class Ads extends Component {
 	onSubmit = async data => {
 		this.onResetFilter();
 		const { filterSelect, filterInput } = data;
-		const adsWithFilter = await this.filterAds(`${filterSelect}`, `${filterInput}`);
+		const adsWithFilter = await filterAd(`${filterSelect}`, `${filterInput}`);
+
 		if (adsWithFilter.error) {
 			alert('Please type a valid filter');
 		} else {
@@ -70,19 +71,18 @@ export default class Ads extends Component {
 		filteredAdsArray = [];
 	};
 
-	renderAdList = adsList => adsList.map(ad => <Card key={ad._id} ad={ad} />);
+	renderAdList = adsList => adsList.map(ad => <CardItem key={ad._id} ad={ad} />);
 
-	renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <Card key={ad._id} ad={ad} />);
+	renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <CardItem key={ad._id} ad={ad} />);
 
 	render() {
 		const { adsList, filteredAdsList } = this.state;
 		if (!adsList) return <h1>Loading Ads...</h1>;
 		return (
 			<div className='content-container'>
-				<Header />
-				<FilterForm onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
+				<Header onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
 				<div className='ads-container'>
-					<ul>{filteredAdsList === null ? this.renderAdList(adsList) : this.renderFilteredAdsList(filteredAdsList)}</ul>
+					<ul className='p-grid p-justify-center'>{filteredAdsList === null ? this.renderAdList(adsList) : this.renderFilteredAdsList(filteredAdsList)}</ul>
 				</div>
 			</div>
 		);

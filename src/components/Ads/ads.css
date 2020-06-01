@@ -1,5 +1,6 @@
 .content-container {
 	width: 100vw;
+	overflow: scroll;
 }
 
 a {
@@ -17,7 +18,6 @@ ul {
 }
 
 .ads-container {
-	overflow: scroll;
 	height: 69vh;
 }
 
