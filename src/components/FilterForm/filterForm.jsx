@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Dropdown } from 'primereact/dropdown';
 import filterParams from '../../const/filterParams';
 import './filterForm.css';
 
@@ -43,21 +44,11 @@ export default class FilterForm extends Component {
 		this.props.onResetFilter();
 	};
 
-	renderFilterParams = filterParams => {
-		return filterParams.map(({ id, param }) => (
-			<option key={id} value={id}>
-				{param}
-			</option>
-		));
-	};
-
 	render() {
 		return (
-			<div className='form-container'>
+			<Fragment>
 				<form className='ads-form' onSubmit={this.submit}>
-					<select className='select-form' onChange={this.onSelect}>
-						{this.renderFilterParams(filterParams)};
-					</select>
+					<Dropdown value={this.state.filterSelect} options={filterParams} onChange={this.onSelect} placeholder='Filter by..' />
 					<input className='input-form' onChange={this.onType} type='text' />
 					<button className='search-form' type='submit'>
 						Search
@@ -66,7 +57,7 @@ export default class FilterForm extends Component {
 				<button className='reset-form' onClick={this.reset}>
 					Reset
 				</button>
-			</div>
+			</Fragment>
 		);
 	}
 }

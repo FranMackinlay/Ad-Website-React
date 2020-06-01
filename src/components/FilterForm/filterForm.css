@@ -1,15 +1,3 @@
-.form-container {
-	display: flex;
-	margin: 30px auto 0 auto;
-	padding: 10px;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	background-color: cornsilk;
-	width: fit-content;
-	border-radius: 10px;
-	border: 1px outset orange;
-}
 .select-form,
 .input-form,
 .search-form,
