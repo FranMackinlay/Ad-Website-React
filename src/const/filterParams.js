@@ -1,32 +1,32 @@
 const filterParams = [
   {
-    id: 'name',
-    param: 'Name',
+    label: 'Name',
+    value: 'name',
     placeHolder: 'Nombre del anuncio'
   },
   {
-    id: 'price',
-    param: 'Price',
+    label: 'Price',
+    value: 'price',
     placeHolder: 'Rango de precio: ej. 1-100'
   },
   {
-    id: 'description',
-    param: 'Description',
+    label: 'Description',
+    value: 'description',
     placeHolder: 'Descripcion del anuncio'
   },
   {
-    id: 'venta',
-    param: 'Type',
+    label: 'Venta',
+    value: 'type',
     placeHolder: 'buy or sell'
   },
   {
-    id: 'photo',
-    param: 'Photo',
+    label: 'Photo',
+    value: 'photo',
     placeHolder: 'URL de la foto'
   },
   {
-    id: 'tags',
-    param: 'Tags',
+    label: 'Tags',
+    value: 'tags',
     placeHolder: 'tag,tag,tag,etc..'
   },
 ];
