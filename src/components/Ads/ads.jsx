@@ -71,9 +71,9 @@ export default class Ads extends Component {
 		filteredAdsArray = [];
 	};
 
-	renderAdList = adsList => adsList.map(ad => <CardItem key={ad._id} ad={ad} />);
+	renderAdList = adsList => adsList.map(ad => <CardItem key={ad._id} ad={ad} {...this.props} />);
 
-	renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <CardItem key={ad._id} ad={ad} />);
+	renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <CardItem key={ad._id} ad={ad} {...this.props} />);
 
 	render() {
 		const { adsList, filteredAdsList } = this.state;

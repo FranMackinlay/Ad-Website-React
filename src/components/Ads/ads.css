@@ -14,11 +14,11 @@ ul {
 	display: grid;
 	gap: 1rem;
 	/* grid-template-columns: auto auto auto; */
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(243px, 1fr));
 }
 
 .ads-container {
-	height: 69vh;
+	height: 90vh;
 }
 
 @media (max-width: 400px) {
