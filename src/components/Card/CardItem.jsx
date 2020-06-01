@@ -7,18 +7,21 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './card.css';
 
-export default function CardItem({ ad }) {
+export default function CardItem({ ad, history }) {
 	const header = <img alt='Ad' src={ad.photo} />;
+
+	const goToEditAd = () => {
+		history.push(`/editAd/id=${ad._id}`);
+	};
+
 	const footer = (
 		<span>
-			<Link to={`/editAd/id=${ad._id}`} className='edit-link'>
-				{/* <Button label='Edit' icon='pi pi-pencil' style={{ marginRight: '.25em' }} /> */}
-				<Button label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
-			</Link>
+			<Button onClick={goToEditAd} label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
 		</span>
 	);
+
 	return (
-		<li className='p-col-6 p-md-2 p-lg-1'>
+		<li className='p-col-2'>
 			<Link key={ad._id} to={`/anuncios/${ad._id}`}>
 				<Card title={ad.name} className='ui-card-shadow' footer={footer} header={header}>
 					<div className='price-type'>
