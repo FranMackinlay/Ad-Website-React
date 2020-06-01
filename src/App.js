@@ -12,8 +12,6 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-
-
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
@@ -23,10 +21,7 @@ export default class App extends Component {
           <Route path="/createAd" component={CreateAd} />
           <Route to="/register" component={Register} />
         </Switch>
-
       </Router>
-
-    )
+    );
   }
-
 }
