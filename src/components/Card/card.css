@@ -61,7 +61,7 @@ p {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 50%;
+	width: 100%;
 	margin: 0 auto;
 }
 .edit-link {
