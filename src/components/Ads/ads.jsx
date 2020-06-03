@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import Header from '../Header/header';
+import Loading from '../Loading/Loading';
 
 import CardItem from '../Card/CardItem';
 
@@ -13,13 +14,11 @@ export const listOfAds = async () => {
 	return ads;
 };
 
-let filteredAdsArray = [];
-
 export default class Ads extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			adsList: [],
+			adsList: false,
 			filteredAdsList: null,
 		};
 	}
@@ -29,33 +28,28 @@ export default class Ads extends Component {
 	}
 
 	getAdsList = async () => {
-		const ads = await getAds();
-		if (ads.error) {
-			alert('No se ha encontrado la lista de anuncios');
-			return this.props.history.push('/login');
+		const { results, error } = await getAds();
+		if (error) {
+			return this.setState({
+				adList: false,
+			});
 		} else {
 			return this.setState({
-				adsList: ads.results,
+				adsList: results,
 			});
 		}
-	};
-
-	filterAds = async (query, value) => {
-		const filteredAds = await filterAd(query, value);
-		return filteredAds;
 	};
 
 	onSubmit = async data => {
 		this.onResetFilter();
 		const { filterSelect, filterInput } = data;
-		const adsWithFilter = await filterAd(`${filterSelect}`, `${filterInput}`);
+		const { results, error } = await filterAd(`${filterSelect}`, `${filterInput}`);
 
-		if (adsWithFilter.error) {
+		if (error) {
 			alert('Please type a valid filter');
 		} else {
-			adsWithFilter.results.forEach(adFiltered => filteredAdsArray.push(adFiltered));
 			this.setState({
-				filteredAdsList: filteredAdsArray,
+				filteredAdsList: results,
 			});
 		}
 	};
@@ -67,8 +61,6 @@ export default class Ads extends Component {
 		this.setState({
 			filteredAdsList: null,
 		});
-
-		filteredAdsArray = [];
 	};
 
 	renderAdList = adsList => adsList.map(ad => <CardItem key={ad._id} ad={ad} {...this.props} />);
@@ -77,7 +69,9 @@ export default class Ads extends Component {
 
 	render() {
 		const { adsList, filteredAdsList } = this.state;
-		if (!adsList) return <h1>Loading Ads...</h1>;
+		if (!adsList) {
+			return <Loading onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} {...this.props} />;
+		}
 		return (
 			<div className='content-container'>
 				<Header onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
