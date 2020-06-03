@@ -8,7 +8,7 @@ import { Button } from 'primereact/button';
 import './card.css';
 
 export default function CardItem({ ad, history }) {
-	const header = <img alt='Ad' src={ad.photo} />;
+	const header = <img className='card-image' alt='Ad' src={ad.photo} />;
 
 	const goToEditAd = () => {
 		history.push(`/editAd/id=${ad._id}`);
