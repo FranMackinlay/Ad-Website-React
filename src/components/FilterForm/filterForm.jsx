@@ -34,9 +34,7 @@ export default class FilterForm extends Component {
 		});
 	};
 
-	reset = () => {
-		this.props.onResetFilter();
-	};
+	reset = () => this.props.onResetFilter();
 
 	render() {
 		return (
