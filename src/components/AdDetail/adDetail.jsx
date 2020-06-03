@@ -43,14 +43,6 @@ export default class adDetail extends Component {
 
 		const adTags = adTagsArray.replace(/,/g, ' - ');
 
-		const header = <img alt='Ad' src={ad.photo} />;
-
-		const footer = (
-			<span>
-				<Button onClick={this.goToEditAd} label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
-			</span>
-		);
-
 		return (
 			<div>
 				<Link className='back-to-ads' to='/anuncios'>
