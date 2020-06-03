@@ -1,6 +1,13 @@
+.search-form {
+	display: flex;
+	align-items: center;
+}
+.p-float-label {
+	margin-left: 5px;
+}
+
 .select-form,
 .input-form,
-.search-form,
 .reset-form {
 	margin: 5px;
 	border-radius: 20px;
@@ -17,7 +24,6 @@
 }
 .select-form:hover,
 .input-form:hover,
-.search-form:hover,
 .reset-form:hover {
 	background-color: rgb(255, 210, 126);
 	transition: 0.25s;
@@ -30,12 +36,20 @@
 	padding: 0px 10px 0px 10px;
 }
 
+.p-button-raised.p-button-rounded {
+	background-color: antiquewhite;
+	color: #333333;
+	border: 1px solid darkorange;
+	margin: 0 5px;
+}
+
+.p-button-raised.p-button-rounded:hover {
+	background-color: rgb(255, 210, 126) !important;
+	border: 1px solid darkorange !important;
+	color: #333333 !important;
+}
+
 @media (max-width: 400px) {
-	.ads-form {
-		width: 290px;
-		padding: 0;
-		justify-content: space-around;
-	}
 	.select-form,
 	.input-form,
 	.search-form,
