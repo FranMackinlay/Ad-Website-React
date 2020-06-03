@@ -7,6 +7,17 @@
 	display: block;
 }
 
+.menu-container {
+	display: flex;
+	width: 150px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.p-button-icon-only .p-button-icon-left {
+	font-weight: 1000;
+}
+
 .text1 {
 	font-size: 50px;
 	font-weight: 700;
@@ -20,6 +31,13 @@
 	font-size: 25px;
 	font-weight: 700;
 	animation: show 2s 1;
+}
+
+body .p-button.p-button-success,
+body .p-buttonset.p-button-success > .p-button {
+	color: #ffffff;
+	background-color: #34a835;
+	border: 1px solid #34a835;
 }
 
 @keyframes text {
