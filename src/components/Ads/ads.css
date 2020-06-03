@@ -25,23 +25,6 @@ ul {
 	.content-container {
 		width: fit-content;
 	}
-	.ads-form {
-		width: 290px;
-		padding: 0;
-		justify-content: space-around;
-	}
-	.select-form,
-	.input-form,
-	.search-form,
-	.reset-form {
-		margin: 3px;
-	}
-	.select-form {
-		width: 70px;
-	}
-	.input-form {
-		width: 80px;
-	}
 }
 
 @media (max-width: 715px) {
