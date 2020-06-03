@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
-import Header from '../Header/header';
+import Navbar from '../Navbar/Navbar';
 import Loading from '../Loading/Loading';
 
 import CardItem from '../Card/CardItem';
@@ -74,7 +74,8 @@ export default class Ads extends Component {
 		}
 		return (
 			<div className='content-container'>
-				<Header onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
+				<Navbar onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
+
 				<div className='ads-container'>
 					<ul className='p-grid p-justify-center'>{filteredAdsList === null ? this.renderAdList(adsList) : this.renderFilteredAdsList(filteredAdsList)}</ul>
 				</div>

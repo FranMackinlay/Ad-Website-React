@@ -5,9 +5,9 @@ import { OverlayPanel } from 'primereact/overlaypanel';
 
 import { Menubar } from 'primereact/menubar';
 import FilterForm from '../FilterForm/filterForm';
-import './header.css';
+import './Navbar.css';
 
-export default function Header({ onSubmit, onResetFilter }) {
+export default function Navbar({ onSubmit, onResetFilter }) {
 	let op = useRef(null);
 	return (
 		<Menubar>

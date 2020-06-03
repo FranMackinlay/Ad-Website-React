@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProgressSpinner } from 'primereact/progressspinner';
-import Header from '../Header/header';
+import Header from '../Navbar/Navbar';
 import './loading.css';
 
 export default function Loading(props) {
