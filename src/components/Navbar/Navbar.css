@@ -1,7 +1,6 @@
 body .p-menubar {
 	background-color: transparent !important;
 	border: none !important;
-	background-image: linear-gradient(rgba(255, 140, 0, 0.653), transparent) !important;
 }
 
 .p-menubar .p-menubar-custom {
