@@ -1,0 +1,49 @@
+.header-container {
+	text-align: center;
+	color: #333333;
+}
+
+.header-container span {
+	display: block;
+}
+
+.text1 {
+	font-size: 50px;
+	font-weight: 700;
+	letter-spacing: 3px;
+	margin-bottom: 20px;
+	position: relative;
+	animation: text 2s 1;
+}
+
+.text2 {
+	font-size: 25px;
+	font-weight: 700;
+	animation: show 2s 1;
+}
+
+@keyframes text {
+	0% {
+		color: #333333;
+		margin-bottom: -40px;
+	}
+	30% {
+		letter-spacing: 5px;
+		margin-bottom: -40px;
+	}
+	85% {
+		letter-spacing: 15px;
+		margin-bottom: -40px;
+	}
+}
+@keyframes show {
+	0% {
+		color: transparent;
+	}
+	85% {
+		color: transparent;
+	}
+	100% {
+		color: #333333;
+	}
+}
