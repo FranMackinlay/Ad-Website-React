@@ -21,41 +21,43 @@
 	transition: 0.25s;
 }
 .detail-container {
-	border: 1px solid #2ecc71;
 	border-radius: 20px;
 	text-align: center;
-	width: fit-content;
 	margin: 0 auto;
-}
-.detail-image {
-	max-height: 30vh;
-	margin: 20px 20px 10px 20px;
-	border-radius: inherit;
-	max-width: unset;
-	min-height: unset;
-}
-.price-type {
+	background-color: #ffffff;
+	color: #333333;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 	display: flex;
-	justify-content: space-around;
-}
-.edit-ad {
-	border-radius: 20px;
-	height: 40px;
-	border: 1px solid darkorange;
-	background-color: transparent;
-	color: black;
-	cursor: pointer;
-	opacity: 0.8;
-	transition: 0.25s;
-	width: 100px;
-	margin: 10px;
-	transition: 0.25s;
-}
-.edit-ad:hover {
-	background-color: darkorange;
-	transition: 0.25s;
+	align-self: center;
+	justify-content: center;
+	width: 1000px;
 }
 
-h1 {
-	color: black;
+.header,
+.footer {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.footer p {
+	text-align: left;
+}
+
+.detail-image {
+	width: 100%;
+	padding: 35px;
+}
+
+.ad-name {
+	color: #333333;
+}
+
+.description {
+	text-align: center !important;
+}
+
+.detail {
+	margin: 17px 0;
 }

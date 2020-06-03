@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import { Button } from 'primereact/button';
 import './adDetail.css';
 
 const { getAdDetail } = api();
@@ -18,17 +19,20 @@ export default class adDetail extends Component {
 		this.getDetailAd(this.props.match.params._id);
 	}
 
+	goToEditAd = () => {
+		this.props.history.push(`/editAd/id=${this.state.ad._id}`);
+	};
+
 	getDetailAd = async id => {
-		const detailAd = await getAdDetail(id);
-		if (detailAd.error) {
+		const { error, result } = await getAdDetail(id);
+		if (error) {
 			alert('No se ha podido encontrar el detalla de este anuncio');
 			this.props.history.push('/anuncios');
 		} else {
 			this.setState({
-				ad: detailAd.result,
-				tags: detailAd.result.tags,
+				ad: result,
+				tags: result.tags,
 			});
-			return detailAd.result;
 		}
 	};
 
@@ -39,25 +43,36 @@ export default class adDetail extends Component {
 
 		const adTags = adTagsArray.replace(/,/g, ' - ');
 
+		const header = <img alt='Ad' src={ad.photo} />;
+
+		const footer = (
+			<span>
+				<Button onClick={this.goToEditAd} label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
+			</span>
+		);
+
 		return (
 			<div>
 				<Link className='back-to-ads' to='/anuncios'>
 					<button className='back-btn'>Atras</button>
 				</Link>
 				<div className='detail-container'>
-					<img className='detail-image' src={ad.photo} alt='AdImage' />
-					<h1>{ad.name}</h1>
-					<div className='price-type'>
-						<p>Price: {ad.price}</p>
-						<p>Type: {ad.type}</p>
+					<div className='header'>
+						<img className='detail-image' src={ad.photo} alt='AdImage' />
 					</div>
-					<p>Description: {ad.description}</p>
-					<p>Tags: {adTags}</p>
-					<br />
-					<Link to={`/editAd/id=${ad._id}`}>
-						<button className='edit-ad'>Editar Anuncio</button>
-					</Link>
-					<br />
+					<div className='footer'>
+						<h1 className='ad-name detail'>{ad.name}</h1>
+						<div className='price-type detail'>
+							<p>Price: {ad.price}</p>
+							<p>Type: {ad.type}</p>
+						</div>
+						<p className='detail description'>{ad.description}</p>
+						<p className='detail'>Tags: {adTags}</p>
+						<br />
+						<Link to={`/editAd/id=${ad._id}`}>
+							<Button label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
+						</Link>
+					</div>
 				</div>
 			</div>
 		);
