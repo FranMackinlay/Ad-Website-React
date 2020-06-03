@@ -10,19 +10,9 @@ const filterParams = [
     placeHolder: 'Rango de precio: ej. 1-100'
   },
   {
-    label: 'Description',
-    value: 'description',
-    placeHolder: 'Descripcion del anuncio'
-  },
-  {
-    label: 'Venta',
-    value: 'type',
+    label: 'Type',
+    value: 'venta',
     placeHolder: 'buy or sell'
-  },
-  {
-    label: 'Photo',
-    value: 'photo',
-    placeHolder: 'URL de la foto'
   },
   {
     label: 'Tags',

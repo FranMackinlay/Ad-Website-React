@@ -84,6 +84,16 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
       }
     },
     filterAd: async (query, value) => {
+      switch (value) {
+        case 'buy':
+          value = false;
+          break;
+        case 'sell':
+          value = true;
+          break;
+        default:
+          break;
+      }
       try {
         const response = await fetch(`${adsApiEndpoint}?${query}=${value}`, {
           method: 'GET',
