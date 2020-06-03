@@ -3,6 +3,11 @@
 	overflow: scroll;
 }
 
+.header-navbar-container {
+	background-image: linear-gradient(rgba(255, 140, 0, 0.653), transparent) !important;
+	padding-bottom: 50px;
+}
+
 a {
 	border-radius: inherit;
 }
