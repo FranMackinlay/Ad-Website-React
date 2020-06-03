@@ -1,3 +1,9 @@
+body .p-menubar {
+	background-color: transparent !important;
+	border: none !important;
+	background-image: linear-gradient(rgba(255, 140, 0, 0.653), transparent) !important;
+}
+
 .p-menubar .p-menubar-custom {
 	display: flex;
 	align-items: center;
@@ -24,4 +30,40 @@
 	justify-content: center;
 	align-items: center;
 	width: fit-content;
+}
+
+.bars-menu {
+	background-color: transparent !important;
+	color: #333333 !important;
+	border: none !important;
+	font-size: 20px !important;
+}
+
+.overlay-ul {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.overlay-li {
+	min-width: 100px;
+	margin: 5px;
+}
+
+body .p-overlaypanel {
+	width: 150px;
+	transform: scaleX(-1);
+}
+
+body .p-overlaypanel .p-overlaypanel-content {
+	padding: 0 !important;
+}
+
+.p-button-secondary {
+	transform: scaleX(-1);
+	min-width: 100%;
+}
+
+.logout:hover {
+	background-color: rgba(255, 0, 0, 0.345) !important;
 }
