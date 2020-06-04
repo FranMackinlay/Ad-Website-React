@@ -16,7 +16,7 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
             'Content-type': 'application/json'
           },
           credentials: 'include'
-        })
+        });
 
         const isRegistrationSuccesfull = await response.json();
 
@@ -39,12 +39,9 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
 
-
         const isLoginSuccesfull = await response.json();
 
-
         return isLoginSuccesfull;
-
 
       } catch (err) {
         console.error(err);
@@ -112,7 +109,6 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
     },
     createAd: async (name, price, description, tags, type, photo) => {
       try {
-        console.log(name, price, description, tags, type, photo);
         const response = await fetch(`${adsApiEndpoint}`, {
           method: 'POST',
           body: JSON.stringify({
@@ -129,8 +125,8 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
           credentials: 'include'
         });
         const isCreateAdOk = await response.json();
-        return isCreateAdOk;
 
+        return isCreateAdOk;
 
       } catch (err) {
         console.error(err);
