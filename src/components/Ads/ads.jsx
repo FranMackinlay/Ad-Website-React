@@ -3,6 +3,7 @@ import api from '../../services/api';
 import Navbar from '../Navbar/Navbar';
 import Header from '../Header/Header';
 import Loading from '../Loading/Loading';
+import { Growl } from 'primereact/growl';
 
 import CardItem from '../Card/CardItem';
 
@@ -26,6 +27,20 @@ export default class Ads extends Component {
 
 	componentDidMount() {
 		this.getAdsList();
+	}
+	componentDidUpdate() {
+		if (this.props.location.state) {
+			switch (this.props.location.state.isAdCreatedSuccesfully) {
+				case true:
+					this.showSuccess();
+					break;
+				case false:
+					this.showError();
+					break;
+				default:
+					break;
+			}
+		}
 	}
 
 	getAdsList = async () => {
@@ -55,6 +70,16 @@ export default class Ads extends Component {
 		}
 	};
 
+	showSuccess = () => {
+		console.log(this);
+
+		this.growl.show({ severity: 'success', summary: 'Congratulations!', detail: 'Ad Created successfully!' });
+	};
+
+	showError = () => {
+		this.growl.show({ severity: 'error', summary: 'Error', detail: 'An error ocurred, try again.' });
+	};
+
 	onResetFilter = event => {
 		if (event) {
 			event.preventDefault();
@@ -82,6 +107,7 @@ export default class Ads extends Component {
 				<div className='ads-container'>
 					<ul className='p-grid p-justify-center'>{filteredAdsList === null ? this.renderAdList(adsList) : this.renderFilteredAdsList(filteredAdsList)}</ul>
 				</div>
+				<Growl ref={el => (this.growl = el)} />
 			</div>
 		);
 	}
