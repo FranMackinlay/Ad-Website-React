@@ -45,9 +45,9 @@ export default class FilterForm extends Component {
 						<InputText id='float-input' value={this.state.filterInput} type='text' size={30} onChange={this.onType} />
 						<label htmlFor='float-input'>Search..</label>
 					</span>
-					<Button label='Search' className='p-button-raised p-button-rounded' type='submit' />
+					<Button id='search-btn' label='Search' className='p-button-raised p-button-rounded' type='submit' />
 				</form>
-				<Button label='Clear' className='p-button-raised p-button-rounded' onClick={this.reset} />
+				<Button id='clear-btn' label='Clear' className='p-button-raised p-button-rounded' onClick={this.reset} />
 			</Fragment>
 		);
 	}

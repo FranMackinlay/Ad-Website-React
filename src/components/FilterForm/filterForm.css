@@ -36,14 +36,16 @@
 	padding: 0px 10px 0px 10px;
 }
 
-.p-button-raised.p-button-rounded {
+#search-btn,
+#clear-btn {
 	background-color: antiquewhite;
 	color: #333333;
 	border: 1px solid darkorange;
 	margin: 0 5px;
 }
 
-.p-button-raised.p-button-rounded:hover {
+#search-btn:hover,
+#clear-btn:hover {
 	background-color: rgb(255, 210, 126) !important;
 	border: 1px solid darkorange !important;
 	color: #333333 !important;
