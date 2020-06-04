@@ -17,8 +17,6 @@
 	transform: scaleX(1);
 }
 
-#back-btn:hover {
-}
 .create-ad-form {
 	display: flex;
 	flex-direction: column;
