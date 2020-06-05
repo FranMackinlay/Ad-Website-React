@@ -6,6 +6,14 @@ import './loading.css';
 
 export default function Loading(props) {
 	const { onSubmit, onResetFilter } = props;
+
+	if (!onSubmit || !onResetFilter) {
+		return (
+			<div className='ads-container'>
+				<ProgressSpinner />
+			</div>
+		);
+	}
 	return (
 		<div className='content-container'>
 			<div className='header-navbar-container'>
