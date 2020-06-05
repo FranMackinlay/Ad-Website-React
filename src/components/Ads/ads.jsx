@@ -28,9 +28,20 @@ export default class Ads extends Component {
 	componentDidMount() {
 		this.getAdsList();
 	}
+
 	componentDidUpdate() {
 		if (this.props.location.state) {
 			switch (this.props.location.state.isAdCreatedSuccesfully) {
+				case true:
+					this.showSuccess();
+					break;
+				case false:
+					this.showError();
+					break;
+				default:
+					break;
+			}
+			switch (this.props.location.state.isAdEditedSuccesfully) {
 				case true:
 					this.showSuccess();
 					break;
@@ -71,8 +82,6 @@ export default class Ads extends Component {
 	};
 
 	showSuccess = () => {
-		console.log(this);
-
 		this.growl.show({ severity: 'success', summary: 'Congratulations!', detail: 'Ad Created successfully!' });
 	};
 

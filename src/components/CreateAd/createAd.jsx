@@ -40,8 +40,8 @@ export default class CreateAd extends Component {
 	onSubmit = async event => {
 		event.preventDefault();
 		const { name, price, description, tags, type, photo } = this.state;
-		const isAdCreated = await createAd(name, price, description, tags, type, photo);
-		if (isAdCreated.error) {
+		const { error } = await createAd(name, price, description, tags, type, photo);
+		if (error) {
 			this.props.history.push({
 				pathname: '/anuncios',
 				state: { isAdCreatedSuccesfully: false },
@@ -88,7 +88,7 @@ export default class CreateAd extends Component {
 					<Button id='create-ad-btn' label='Create Ad' type='submit' className='p-button-raised p-button-success' />
 				</form>
 				<br />
-				<Growl ref={el => (this.growl = el)} />
+				<Growl ref={el => console.log(this.growl)} />
 			</div>
 		);
 	}

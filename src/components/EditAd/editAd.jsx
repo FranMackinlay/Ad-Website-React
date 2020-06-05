@@ -4,6 +4,7 @@ import { InputText } from 'primereact/inputtext';
 import { Link } from 'react-router-dom';
 import { Button } from 'primereact/button';
 import { Growl } from 'primereact/growl';
+import Loading from '../Loading/Loading';
 import './editAd.css';
 
 const { getAdDetail, editAd } = api();
@@ -55,16 +56,23 @@ export default class EditAd extends Component {
 	onSubmit = async event => {
 		event.preventDefault();
 		const { name, price, description, tags, type, photo } = this.state;
-		const isAdEdited = await editAd(this.props.match.params._id, name, price, description, tags, type, photo);
-		if (isAdEdited.error) {
-			alert('No se ha podido editar el anuncio, intente nuevamente');
+		const { error } = await editAd(this.props.match.params._id, name, price, description, tags, type, photo);
+		if (error) {
+			this.props.history.push({
+				pathname: '/anuncios',
+				state: { isAdEditedSuccesfully: false },
+			});
 		} else {
-			this.props.history.push('/anuncios');
+			this.props.history.push({
+				pathname: '/anuncios',
+				state: { isAdEditedSuccesfully: true },
+			});
 		}
 	};
 
 	render() {
 		const { name, price, description, tags, type, photo } = this.state;
+		if (!photo) return <Loading></Loading>;
 		return (
 			<div>
 				<Link className='back-to-ads' to='/anuncios'>
