@@ -44,23 +44,7 @@ div[class^='edit'] label {
 	text-align: left;
 	width: 60px;
 }
-/* div[class^='edit'] input {
-	background: none;
-	display: block;
-	margin: 10px;
-	text-align: center;
-	border: 2px solid #3498db;
-	padding: 14px 10px;
-	width: 100px;
-	outline: none;
-	color: black;
-	border-radius: 24px;
-	transition: 0.25s;
-} */
-/* div[class^='edit'] input:focus {
-	width: 150px;
-	border-color: #2ecc71;
-} */
+
 #edit-ad-btn {
 	background: none;
 	display: block;

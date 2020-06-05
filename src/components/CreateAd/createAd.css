@@ -38,6 +38,7 @@ div[class^='create'] {
 }
 div[class^='create'] label {
 	text-align: left;
+	width: 60px;
 }
 #create-ad-btn {
 	background: none;
