@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 import { Button } from 'primereact/button';
 import './adDetail.css';
 
@@ -42,6 +43,8 @@ export default class adDetail extends Component {
 		const adTagsArray = tags.toString();
 
 		const adTags = adTagsArray.replace(/,/g, ' - ');
+
+		if (!ad.photo) return <Loading></Loading>;
 
 		return (
 			<div>
