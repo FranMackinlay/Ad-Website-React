@@ -26,16 +26,3 @@ ul {
 .ads-container {
 	height: 90vh;
 }
-
-@media (max-width: 400px) {
-	.content-container {
-		width: fit-content;
-	}
-}
-
-@media (max-width: 715px) {
-	.create-ad {
-		top: 10px;
-		right: -20px;
-	}
-}

@@ -50,18 +50,3 @@
 	border: 1px solid darkorange !important;
 	color: #333333 !important;
 }
-
-@media (max-width: 400px) {
-	.select-form,
-	.input-form,
-	.search-form,
-	.reset-form {
-		margin: 3px;
-	}
-	.select-form {
-		width: 70px;
-	}
-	.input-form {
-		width: 80px;
-	}
-}
