@@ -57,3 +57,24 @@ div[class^='create'] label {
 	background-color: #34a835;
 	color: white;
 }
+
+@media (max-width: 560px) {
+	.create-ad-form {
+		width: 94%;
+		margin: 10px;
+	}
+	div[class^='create'] {
+		margin: 5px;
+	}
+	#name,
+	#price,
+	#description,
+	#tags,
+	#type,
+	#photo {
+		width: 50%;
+	}
+	#back-btn {
+		width: 50px;
+	}
+}

@@ -26,3 +26,9 @@ ul {
 .ads-container {
 	height: 90vh;
 }
+
+@media (max-width: 730px) {
+	.header-navbar-container {
+		padding-bottom: 25px;
+	}
+}

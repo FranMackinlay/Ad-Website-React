@@ -26,10 +26,10 @@ export default class Register extends Component {
 		event.preventDefault();
 		const { userInput, passInput } = this.state;
 
-		const isLoginOk = await login(userInput, passInput);
+		const { error } = await login(userInput, passInput);
 
-		if (isLoginOk.error) {
-			alert(isLoginOk.error);
+		if (error) {
+			alert(error);
 			this.goToRegistration();
 		} else {
 			this.props.history.push('/anuncios');

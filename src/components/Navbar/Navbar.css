@@ -66,3 +66,29 @@ body .p-overlaypanel .p-overlaypanel-content {
 .logout:hover {
 	background-color: rgba(255, 0, 0, 0.345) !important;
 }
+
+@media (max-width: 730px) {
+	.p-menubar .p-menubar-custom {
+		flex-direction: column;
+	}
+	.form-container {
+		margin: 0 auto;
+		order: 2;
+	}
+	.menu-container {
+		order: 1;
+		width: 100% !important;
+		transform: scaleX(-1);
+		position: absolute;
+		margin: 0;
+		padding: 0 10px;
+	}
+	body .p-overlaypanel {
+		width: unset;
+		transform: none;
+	}
+	.p-button-secondary {
+		transform: none;
+		min-width: 100%;
+	}
+}

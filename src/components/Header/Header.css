@@ -65,3 +65,12 @@ body .p-buttonset.p-button-success > .p-button {
 		color: #333333;
 	}
 }
+
+@media (max-width: 730px) {
+	.text1 {
+		font-size: 30px;
+	}
+	.text2 {
+		font-size: 12px;
+	}
+}

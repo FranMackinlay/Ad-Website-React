@@ -50,3 +50,12 @@
 	border: 1px solid darkorange !important;
 	color: #333333 !important;
 }
+
+@media (max-width: 500px) {
+	#clear-btn {
+		display: none;
+	}
+	#float-input {
+		width: 100%;
+	}
+}

@@ -49,7 +49,7 @@ export default class adDetail extends Component {
 		return (
 			<div>
 				<Link className='back-to-ads' to='/anuncios'>
-					<button className='back-btn'>Atras</button>
+					<Button id='back-btn' label='Back' className='p-button-raised p-button-rounded p-button-secondary' />
 				</Link>
 				<div className='detail-container'>
 					<div className='header'>
@@ -63,8 +63,7 @@ export default class adDetail extends Component {
 						</div>
 						<p className='detail description'>{ad.description}</p>
 						<p className='detail'>Tags: {adTags}</p>
-						<br />
-						<Link to={`/editAd/id=${ad._id}`}>
+						<Link className='edit-link' to={`/editAd/id=${ad._id}`}>
 							<Button label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
 						</Link>
 					</div>
