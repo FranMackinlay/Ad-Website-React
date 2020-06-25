@@ -12,112 +12,122 @@ import './ads.css';
 const { getAds, filterAd } = api();
 
 export const listOfAds = async () => {
-	const ads = await getAds();
-	return ads;
+  const ads = await getAds();
+  return ads;
 };
 
+let token;
+
 export default class Ads extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			adsList: false,
-			filteredAdsList: null,
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      adsList: false,
+      filteredAdsList: null,
+    };
 
-	componentDidMount() {
-		this.getAdsList();
-	}
+  }
 
-	componentDidUpdate() {
-		if (this.props.location.state) {
-			switch (this.props.location.state.isAdCreatedSuccesfully) {
-				case true:
-					this.showSuccess();
-					break;
-				case false:
-					this.showError();
-					break;
-				default:
-					break;
-			}
-			switch (this.props.location.state.isAdEditedSuccesfully) {
-				case true:
-					this.showSuccess();
-					break;
-				case false:
-					this.showError();
-					break;
-				default:
-					break;
-			}
-		}
-	}
+  componentDidMount() {
+    if (this.props?.location?.state?.token) {
+      token = this.props.location.state.token;
+    }
+    this.getAdsList();
+  }
 
-	getAdsList = async () => {
-		const { results, error } = await getAds();
-		if (error) {
-			return this.setState({
-				adList: false,
-			});
-		} else {
-			return this.setState({
-				adsList: results,
-			});
-		}
-	};
+  componentDidUpdate() {
+    if (this.props.location.state) {
+      switch (this.props.location.state.isAdCreatedSuccesfully) {
+        case true:
+          this.showSuccess();
+          break;
+        case false:
+          this.showError();
+          break;
+        default:
+          break;
+      }
+      switch (this.props.location.state.isAdEditedSuccesfully) {
+        case true:
+          this.showSuccess();
+          break;
+        case false:
+          this.showError();
+          break;
+        default:
+          break;
+      }
+    }
+  }
 
-	onSubmit = async data => {
-		this.onResetFilter();
-		const { filterSelect, filterInput } = data;
-		const { results, error } = await filterAd(`${filterSelect}`, `${filterInput}`);
+  getAdsList = async () => {
+    const { results, message } = await getAds(token);
+    console.log(results, message);
+    if (message) {
+      return this.setState({
+        adList: false,
+      });
+    } else {
+      return this.setState({
+        adsList: results,
+      });
+    }
+  };
 
-		if (error) {
-			alert('Please type a valid filter');
-		} else {
-			this.setState({
-				filteredAdsList: results,
-			});
-		}
-	};
+  onSubmit = async data => {
+    this.onResetFilter();
+    const { filterSelect, filterInput } = data;
+    const { results, error } = await filterAd(`${filterSelect}`, `${filterInput}`);
 
-	showSuccess = () => {
-		this.growl.show({ severity: 'success', summary: 'Congratulations!', detail: 'Ad Created successfully!' });
-	};
+    if (error) {
+      alert('Please type a valid filter');
+    } else {
+      this.setState({
+        filteredAdsList: results,
+      });
+    }
+  };
 
-	showError = () => {
-		this.growl.show({ severity: 'error', summary: 'Error', detail: 'An error ocurred, try again.' });
-	};
+  showSuccess = () => {
+    this.growl.show({ severity: 'success', summary: 'Congratulations!', detail: 'Ad Created successfully!' });
+  };
 
-	onResetFilter = event => {
-		if (event) {
-			event.preventDefault();
-		}
-		this.setState({
-			filteredAdsList: null,
-		});
-	};
+  showError = () => {
+    this.growl.show({ severity: 'error', summary: 'Error', detail: 'An error ocurred, try again.' });
+  };
 
-	renderAdList = adsList => adsList.map(ad => <CardItem key={ad._id} ad={ad} {...this.props} />);
+  onResetFilter = event => {
+    if (event) {
+      event.preventDefault();
+    }
+    this.setState({
+      filteredAdsList: null,
+    });
+  };
 
-	renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <CardItem key={ad._id} ad={ad} {...this.props} />);
+  renderAdList = adsList => adsList.map(ad => {
+    console.log(ad);
+    return <CardItem key={ad._id} ad={ad} token={token} {...this.props} />
+  });
 
-	render() {
-		const { adsList, filteredAdsList } = this.state;
-		if (!adsList) {
-			return <Loading onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} {...this.props} />;
-		}
-		return (
-			<div className='content-container'>
-				<div className='header-navbar-container'>
-					<Navbar onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
-					<Header />
-				</div>
-				<div className='ads-container'>
-					<ul className='p-grid p-justify-center'>{filteredAdsList === null ? this.renderAdList(adsList) : this.renderFilteredAdsList(filteredAdsList)}</ul>
-				</div>
-				<Growl ref={el => (this.growl = el)} />
-			</div>
-		);
-	}
+  renderFilteredAdsList = filteredAdsList => filteredAdsList.map(ad => <CardItem key={ad._id} ad={ad} token={token} {...this.props} />);
+
+  render() {
+    const { adsList, filteredAdsList } = this.state;
+    if (!adsList) {
+      return <Loading onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} {...this.props} />;
+    }
+    return (
+      <div className='content-container'>
+        <div className='header-navbar-container'>
+          <Navbar onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
+          <Header />
+        </div>
+        <div className='ads-container'>
+          <ul className='p-grid p-justify-center'>{filteredAdsList === null ? this.renderAdList(adsList) : this.renderFilteredAdsList(filteredAdsList)}</ul>
+        </div>
+        <Growl ref={el => (this.growl = el)} />
+      </div>
+    );
+  }
 }

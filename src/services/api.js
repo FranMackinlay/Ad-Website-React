@@ -15,7 +15,7 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
           headers: {
             'Content-type': 'application/json'
           },
-          credentials: 'include'
+          // credentials: 'include'
         });
 
         const isRegistrationSuccesfull = await response.json();
@@ -36,10 +36,12 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
           headers: {
             'Content-type': 'application/json'
           },
-          // credentials: 'include'
+          // // credentials: 'include'
         });
 
         const isLoginSuccesfull = await response.json();
+
+        console.log('LOGIN', isLoginSuccesfull);
 
         return isLoginSuccesfull;
 
@@ -47,31 +49,39 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
         console.error(err);
       }
     },
-    getAds: async () => {
+    getAds: async (token) => {
       try {
-        const response = await fetch(`${adsApiEndpoint}`, {
+        const response = await fetch(`http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com/api/ads?token=${token}`, {
           method: 'GET',
           headers: {
             'Content-type': 'application/json'
           },
-          credentials: 'include'
+          // // credentials: 'include'
         });
         const isGetAdsSuccesfull = await response.json();
 
-        return isGetAdsSuccesfull;
+        const results = {
+          results: isGetAdsSuccesfull,
+        };
+
+        console.log(results);
+
+        return results;
 
       } catch (err) {
         console.error(err);
       }
     },
-    getAdDetail: async id => {
+    getAdDetail: async (id, token) => {
+      console.log('id', id);
+      console.log('token', token);
       try {
-        const response = await fetch(`${adsApiEndpoint}/${id}`, {
+        const response = await fetch(`${adsApiEndpoint}/${id}?token=${token}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           },
-          credentials: 'include'
+          // credentials: 'include'
         });
         const isGetAdDetailOk = await response.json();
 
@@ -97,7 +107,7 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
           headers: {
             'Content-Type': 'application/json'
           },
-          credentials: 'include'
+          // credentials: 'include'
         });
         const isFilterAdOk = await response.json();
 
@@ -122,7 +132,7 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
           headers: {
             'Content-Type': 'application/json'
           },
-          credentials: 'include'
+          // credentials: 'include'
         });
         const isCreateAdOk = await response.json();
 
@@ -147,7 +157,7 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
           headers: {
             'Content-Type': 'application/json'
           },
-          credentials: 'include'
+          // credentials: 'include'
         });
         const isEditAdOk = await response.json();
 
