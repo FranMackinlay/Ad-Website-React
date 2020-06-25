@@ -1,7 +1,7 @@
-const api = (API_URL = 'http://34.89.93.186:8080') => {
-  const registerApiEndpoint = `${API_URL}/apiv1/register`;
-  const loginApiEndpoint = `${API_URL}/apiv1/login`;
-  const adsApiEndpoint = `${API_URL}/apiv1/anuncios`;
+const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com') => {
+  const registerApiEndpoint = `${API_URL}/api/register`;
+  const loginApiEndpoint = `${API_URL}/api/authenticate`;
+  const adsApiEndpoint = `${API_URL}/api/ads`;
   const editAdApiEndpoint = `${API_URL}/apiv1/anuncios/`;
   return {
     register: async (username, password) => {
@@ -30,13 +30,13 @@ const api = (API_URL = 'http://34.89.93.186:8080') => {
         const response = await fetch(`${loginApiEndpoint}`, {
           method: 'POST',
           body: JSON.stringify({
-            username: `${username}`,
+            email: `${username}`,
             password: `${password}`
           }),
           headers: {
             'Content-type': 'application/json'
           },
-          credentials: 'include'
+          // credentials: 'include'
         });
 
         const isLoginSuccesfull = await response.json();
