@@ -7,7 +7,7 @@ import { Menubar } from 'primereact/menubar';
 import FilterForm from '../FilterForm/filterForm';
 import './Navbar.css';
 
-export default function Navbar({ onSubmit, onResetFilter, token }) {
+export default function Navbar({ onSubmit, onResetFilter }) {
   let op = useRef(null);
   return (
     <Menubar>
@@ -18,10 +18,7 @@ export default function Navbar({ onSubmit, onResetFilter, token }) {
         <FilterForm onSubmit={onSubmit} onResetFilter={onResetFilter} />
       </div>
       <div className='menu-container'>
-        <Link to={{
-          pathname: '/createAd',
-          state: { token }
-        }}>
+        <Link to={'/createAd'}>
           <Button icon='pi pi-plus' className='p-button-raised p-button-success' />
         </Link>
         <Button type='button' className='bars-menu' icon='pi pi-bars' onClick={e => op.current.toggle(e)} />

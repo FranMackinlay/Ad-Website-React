@@ -27,7 +27,9 @@ export default class Register extends Component {
     const { userInput, passInput } = this.state;
 
     const { token, message } = await login(userInput, passInput);
-    console.log(token);
+    if (token) {
+      localStorage.setItem('token', token);
+    }
     if (message) {
       alert(message);
       this.goToRegistration();

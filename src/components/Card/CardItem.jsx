@@ -7,8 +7,11 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './card.css';
 
-export default function CardItem({ ad, token, history }) {
-  console.log('CARD', token);
+export default function CardItem({ ad, history }) {
+  let header2;
+  if (ad.photo?.includes('data')) {
+    header2 = <img className='card-image' alt='Ad' src={`${ad.photo}`} />;
+  }
   const header = <img className='card-image' alt='Ad' src={`http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com${ad.photo}`} />;
 
   const goToEditAd = () => {
@@ -30,11 +33,8 @@ export default function CardItem({ ad, token, history }) {
 
   return (
     <li className='p-col-2'>
-      <Link key={ad._id} to={{
-        pathname: `/anuncios/${ad._id}`,
-        state: { token }
-      }}>
-        <Card title={ad.adName} className='ui-card-shadow' footer={footer} header={header}>
+      <Link key={ad._id} to={`/anuncios/${ad._id}`}>
+        <Card title={ad.adName} className='ui-card-shadow' footer={footer} header={header2 ? header2 : header}>
           <div className='price-type'>
             <p>Price: {ad.price}</p>
             <p>Type: {type.sale}</p>

@@ -3,7 +3,6 @@ import api from '../../services/api';
 import { InputText } from 'primereact/inputtext';
 import { Link } from 'react-router-dom';
 import { Button } from 'primereact/button';
-import { Growl } from 'primereact/growl';
 import { FileUpload } from 'primereact/fileupload';
 import './createAd.css';
 
@@ -39,30 +38,33 @@ export default class CreateAd extends Component {
   };
 
   onSubmit = async event => {
+    const token = localStorage.getItem('token');
     event.preventDefault();
     const { adName, price, description, tags, type, photo } = this.state;
-    // console.log(adName, price, description, tags, type, photo);
-    const result = await createAd(adName, price, description, tags, type, photo, this.props.location.state.token);
+    const { result } = await createAd(adName, price, description, tags, type, photo, token);
     console.log('RESULT', result);
-    // if (error) {
-    // 	this.props.history.push({
-    // 		pathname: '/anuncios',
-    // 		state: { isAdCreatedSuccesfully: false },
-    // 	});
-    // } else {
-    // 	this.props.history.push({
-    // 		pathname: '/anuncios',
-    // 		state: { isAdCreatedSuccesfully: true },
-    // 	});
-    // }
+    if (!result.includes('success')) {
+      alert('Ups, something went wrong. Please try again.')
+    } else {
+      this.props.history.push('/anuncios');
+    }
   };
 
-  myUploader = event => {
-    console.log(event.files[0]);
+  uploadInvoice = file => {
+    console.log('FILE', file);
     this.setState({
-      photo: event.files[0],
+      photo: file,
     });
   }
+
+  invoiceUploadHandler = ({ files }) => {
+    const [file] = files;
+    const fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      this.uploadInvoice(e.target.result);
+    };
+    fileReader.readAsDataURL(file);
+  };
 
   render() {
     return (
@@ -93,13 +95,17 @@ export default class CreateAd extends Component {
           </div>
           <div className='create-photo'>
             <label htmlFor='photo'>Photo:</label>
-            <FileUpload name="demo[]" mode="basic" url="/" customUpload={true} uploadHandler={this.myUploader} />
+            <FileUpload name="invoice"
+              accept="image/*"
+              customUpload={true}
+              uploadHandler={this.invoiceUploadHandler}
+              mode="basic"
+              auto={true} />
             {/* <InputText id='photo' onChange={this.handleInput} name='photo' type='text' placeholder='Ad Photo' required /> */}
           </div>
           <Button id='create-ad-btn' label='Create Ad' type='submit' className='p-button-raised p-button-success' />
         </form>
         <br />
-        <Growl ref={el => console.log(this.growl)} />
       </div>
     );
   }

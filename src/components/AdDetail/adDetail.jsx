@@ -17,23 +17,20 @@ export default class adDetail extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.history.location);
-    this.getDetailAd(this.props.match.params._id);
+    const token = localStorage.getItem('token');
+    this.getDetailAd(this.props.match.params._id, token);
   }
 
   goToEditAd = () => {
     this.props.history.push(`/editAd/id=${this.state.ad._id}`);
   };
 
-  getDetailAd = async id => {
-    console.log('adDetail', this.props.location.state);
-    const { result, message } = await getAdDetail(id, this.props.location.state.token);
-    console.log('result', result);
+  getDetailAd = async (id, token) => {
+    const { result, message } = await getAdDetail(id, token);
     if (message) {
       alert('No se ha podido encontrar el detalle de este anuncio');
       this.props.history.push('/anuncios');
     } else {
-      console.log('here');
       this.setState({
         ad: result,
         tags: result.tags,
@@ -49,7 +46,10 @@ export default class adDetail extends Component {
     } else {
       type.sale = 'buy';
     }
-
+    let image;
+    if (ad.photo?.includes('data')) {
+      image = ad.photo;
+    }
     const adTagsArray = tags.toString();
 
     const adTags = adTagsArray.replace(/,/g, ' - ');
@@ -63,7 +63,7 @@ export default class adDetail extends Component {
         </Link>
         <div className='detail-container'>
           <div className='header'>
-            <img className='detail-image' src={`http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com/${ad.photo}`} alt='AdImage' />
+            <img className='detail-image' src={image ? image : `http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com/${ad.photo}`} alt='AdImage' />
           </div>
           <div className='footer'>
             <h1 className='ad-name detail'>{ad.adName}</h1>

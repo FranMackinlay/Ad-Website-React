@@ -128,12 +128,12 @@ const api = (API_URL = 'http://localhost:3000') => {
         const response = await fetch(`${adsApiEndpoint}?token=${token}`, {
           method: 'POST',
           body: formData,
-          query: {
-            token
-          },
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          // query: {
+          //   token
+          // },
+          // headers: {
+          //   'Content-Type': 'application/json',
+          // },
         });
         const isCreateAdOk = await response.json();
 
