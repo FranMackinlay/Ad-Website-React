@@ -61,15 +61,15 @@ export default class Ads extends Component {
   }
 
   getAdsList = async () => {
-    const { results, message } = await getAds(token);
-    console.log(results, message);
-    if (message) {
+    const result = await getAds(token);
+    console.log('RESULT', result);
+    if (!result) {
       return this.setState({
         adList: false,
       });
     } else {
       return this.setState({
-        adsList: results,
+        adsList: result,
       });
     }
   };
@@ -114,13 +114,14 @@ export default class Ads extends Component {
 
   render() {
     const { adsList, filteredAdsList } = this.state;
+    console.log('ADSLIST', adsList);
     if (!adsList) {
       return <Loading onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} {...this.props} />;
     }
     return (
       <div className='content-container'>
         <div className='header-navbar-container'>
-          <Navbar onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} />
+          <Navbar onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} token={token} />
           <Header />
         </div>
         <div className='ads-container'>

@@ -63,7 +63,7 @@ export default class adDetail extends Component {
         </Link>
         <div className='detail-container'>
           <div className='header'>
-            <img className='detail-image' src={ad.photo} alt='AdImage' />
+            <img className='detail-image' src={`http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com/${ad.photo}`} alt='AdImage' />
           </div>
           <div className='footer'>
             <h1 className='ad-name detail'>{ad.adName}</h1>

@@ -1,4 +1,5 @@
-const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com') => {
+// const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com') => {
+const api = (API_URL = 'http://localhost:3000') => {
   const registerApiEndpoint = `${API_URL}/api/register`;
   const loginApiEndpoint = `${API_URL}/api/authenticate`;
   const adsApiEndpoint = `${API_URL}/api/ads`;
@@ -51,7 +52,7 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
     },
     getAds: async (token) => {
       try {
-        const response = await fetch(`http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com/api/ads?token=${token}`, {
+        const response = await fetch(`${adsApiEndpoint}?token=${token}`, {
           method: 'GET',
           headers: {
             'Content-type': 'application/json'
@@ -60,13 +61,9 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
         });
         const isGetAdsSuccesfull = await response.json();
 
-        const results = {
-          results: isGetAdsSuccesfull,
-        };
-
-        console.log(results);
-
-        return results;
+        const { adList } = isGetAdsSuccesfull;
+        console.log('API ADLIST', adList);
+        return adList;
 
       } catch (err) {
         console.error(err);
@@ -117,24 +114,30 @@ const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com'
         console.error(err);
       }
     },
-    createAd: async (name, price, description, tags, type, photo) => {
+    createAd: async (adName, price, description, tags, type, photo, token) => {
       try {
-        const response = await fetch(`${adsApiEndpoint}`, {
+        const formData = new FormData();
+        formData.append('price', parseInt(price));
+        formData.append('adName', adName);
+        formData.append('description', description);
+        formData.append('tags', tags);
+        formData.append('type', type);
+        formData.append('photo', photo);
+        formData.append('token', token);
+
+        const response = await fetch(`${adsApiEndpoint}?token=${token}`, {
           method: 'POST',
-          body: JSON.stringify({
-            name: `${name}`,
-            price: parseInt(price),
-            description: `${description}`,
-            tags: tags,
-            type: `${type}`,
-            photo: `${photo}`
-          }),
-          headers: {
-            'Content-Type': 'application/json'
+          body: formData,
+          query: {
+            token
           },
-          // credentials: 'include'
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
         const isCreateAdOk = await response.json();
+
+        console.log('ISCREATEADOK', isCreateAdOk);
 
         return isCreateAdOk;
 

@@ -9,7 +9,7 @@ import './card.css';
 
 export default function CardItem({ ad, token, history }) {
   console.log('CARD', token);
-  const header = <img className='card-image' alt='Ad' src={ad.photo} />;
+  const header = <img className='card-image' alt='Ad' src={`http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com${ad.photo}`} />;
 
   const goToEditAd = () => {
     history.push(`/editAd/id=${ad._id}`);
