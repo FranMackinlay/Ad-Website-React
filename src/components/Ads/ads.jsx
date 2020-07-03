@@ -79,7 +79,6 @@ export default class Ads extends Component {
 
   render() {
     const { adsList, filteredAdsList } = this.state;
-    console.log('ADSLIST', adsList);
     if (!adsList) {
       return <Loading onSubmit={this.onSubmit} onResetFilter={this.onResetFilter} {...this.props} />;
     }

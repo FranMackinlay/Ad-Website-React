@@ -8,7 +8,7 @@ import Loading from '../Loading/Loading';
 import { FileUpload } from 'primereact/fileupload';
 import './editAd.css';
 
-const { getAdDetail, editAd } = api();
+const { getAdDetail, editAd, deleteAd } = api();
 
 export default class EditAd extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class EditAd extends Component {
       price: detailAd.result.price,
       description: detailAd.result.description,
       tags: detailAd.result.tags,
-      sale: detailAd.result.type,
+      sale: detailAd.result.sale,
       photo: detailAd.result.photo,
     });
     return detailAd;
@@ -61,24 +61,28 @@ export default class EditAd extends Component {
 
   onSubmit = async event => {
     event.preventDefault();
-    // const { name, price, description, tags, type, photo } = this.state;
-    const result = await editAd(this.state);
-    console.log('RESULT EDIT AD', result);
-    // if (error) {
-    //   this.props.history.push({
-    //     pathname: '/anuncios',
-    //     state: { isAdEditedSuccesfully: false },
-    //   });
-    // } else {
-    //   this.props.history.push({
-    //     pathname: '/anuncios',
-    //     state: { isAdEditedSuccesfully: true },
-    //   });
-    // }
+    const { result } = await editAd(this.state);
+    if (!result) {
+      this.props.history.push({
+        pathname: '/anuncios',
+        state: { isAdEditedSuccesfully: false },
+      });
+    } else {
+      this.props.history.push({
+        pathname: '/anuncios',
+        state: { isAdEditedSuccesfully: true },
+      });
+    }
+  };
+
+  deleteAd = async () => {
+    const { result } = await deleteAd(this.state);
+    if (result) {
+      this.props.history.push('/anuncios');
+    }
   };
 
   uploadInvoice = file => {
-    console.log('FILE', file);
     this.setState({
       photo: file,
     });
@@ -94,7 +98,7 @@ export default class EditAd extends Component {
   };
 
   render() {
-    const { name, price, description, tags, type, photo } = this.state;
+    const { name, price, description, tags, sale, photo } = this.state;
     if (!photo) return <Loading></Loading>;
     return (
       <div>
@@ -118,9 +122,9 @@ export default class EditAd extends Component {
             <label htmlFor='tags'>Tags:</label>
             <InputText id='tags' value={tags} onChange={this.handleInput} name='tags' type='text' placeholder='Ad Tags' />
           </div>
-          <div className='edit-type'>
-            <label htmlFor='type'>Type:</label>
-            <InputText id='type' value={type} onChange={this.handleInput} name='type' type='text' placeholder='Buy or Sell' required />
+          <div className='edit-sale'>
+            <label htmlFor='sale'>Sale:</label>
+            <InputText id='sale' value={sale ? 'sell' : 'buy'} onChange={this.handleInput} name='sale' type='text' placeholder='Buy or Sell' required />
           </div>
           <div className='edit-photo'>
             <label htmlFor='photo'>Photo:</label>
@@ -132,7 +136,10 @@ export default class EditAd extends Component {
               auto={true} />
             {/* <InputText id='photo' onChange={this.handleInput} name='photo' type='text' placeholder='Ad Photo' required /> */}
           </div>
-          <Button id='edit-ad-btn' label='Save Changes' type='submit' className='p-button-raised p-button-success' />
+          <div className="buttons">
+            <Button id='delete-ad-btn' onClick={this.deleteAd} label='Delete' className='p-button-raised p-button-danger' />
+            <Button id='edit-ad-btn' label='Save Changes' type='submit' className='p-button-raised p-button-success' />
+          </div>
         </form>
         <br />
         <Growl ref={el => (this.growl = el)} />

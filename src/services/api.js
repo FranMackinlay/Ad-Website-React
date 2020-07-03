@@ -42,8 +42,6 @@ const api = (API_URL = 'http://localhost:3000') => {
 
         const isLoginSuccesfull = await response.json();
 
-        console.log('LOGIN', isLoginSuccesfull);
-
         return isLoginSuccesfull;
 
       } catch (err) {
@@ -62,7 +60,6 @@ const api = (API_URL = 'http://localhost:3000') => {
         const isGetAdsSuccesfull = await response.json();
 
         const { adList } = isGetAdsSuccesfull;
-        console.log('API ADLIST', adList);
         return adList;
 
       } catch (err) {
@@ -70,8 +67,6 @@ const api = (API_URL = 'http://localhost:3000') => {
       }
     },
     getAdDetail: async ({ id, token }) => {
-      console.log('id', id);
-      console.log('token', token);
       try {
         const response = await fetch(`${adsApiEndpoint}/${id}?token=${token}`, {
           method: 'GET',
@@ -81,7 +76,6 @@ const api = (API_URL = 'http://localhost:3000') => {
           // credentials: 'include'
         });
         const isGetAdDetailOk = await response.json();
-        console.log('ISGETADDETAILOK', isGetAdDetailOk);
 
         return isGetAdDetailOk;
       } catch (err) {
@@ -138,8 +132,6 @@ const api = (API_URL = 'http://localhost:3000') => {
         });
         const isCreateAdOk = await response.json();
 
-        console.log('ISCREATEADOK', isCreateAdOk);
-
         return isCreateAdOk;
 
       } catch (err) {
@@ -165,11 +157,27 @@ const api = (API_URL = 'http://localhost:3000') => {
           // credentials: 'include'
         });
         const isEditAdOk = await response.json();
-        console.log('ISEDITADOK', isEditAdOk);
         return isEditAdOk;
 
       } catch (err) {
         console.error(err);
+      }
+    },
+    deleteAd: async ({ id, token }) => {
+      try {
+        const response = await fetch(`${adsApiEndpoint}/${id}?token=${token}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
+
+        const isDeleteOk = await response.json();
+
+        return isDeleteOk;
+
+      } catch (error) {
+        console.error(error);
       }
     }
 
