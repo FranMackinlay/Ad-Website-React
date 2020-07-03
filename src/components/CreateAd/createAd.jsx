@@ -42,7 +42,6 @@ export default class CreateAd extends Component {
     event.preventDefault();
     const { adName, price, description, tags, type, photo } = this.state;
     const { result } = await createAd(adName, price, description, tags, type, photo, token);
-    console.log('RESULT', result);
     if (!result.includes('success')) {
       alert('Ups, something went wrong. Please try again.')
     } else {
@@ -51,7 +50,6 @@ export default class CreateAd extends Component {
   };
 
   uploadInvoice = file => {
-    console.log('FILE', file);
     this.setState({
       photo: file,
     });
@@ -64,6 +62,7 @@ export default class CreateAd extends Component {
       this.uploadInvoice(e.target.result);
     };
     fileReader.readAsDataURL(file);
+    console.log('FILEREADER', fileReader);
   };
 
   render() {

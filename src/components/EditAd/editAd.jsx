@@ -124,10 +124,6 @@ export default class EditAd extends Component {
           </div>
           <div className='edit-photo'>
             <label htmlFor='photo'>Photo:</label>
-            <InputText id='photo' value={photo} onChange={this.handleInput} name='photo' type='text' placeholder='Ad Photo' required />
-          </div>
-          <div className='create-photo'>
-            <label htmlFor='photo'>Photo:</label>
             <FileUpload name="invoice"
               accept="image/*"
               customUpload={true}

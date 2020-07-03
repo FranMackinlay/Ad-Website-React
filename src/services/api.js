@@ -148,19 +148,20 @@ const api = (API_URL = 'http://localhost:3000') => {
     },
     editAd: async ({ id, token, name, price, description, tags, type, photo }) => {
       try {
+        const formData = new FormData();
+        formData.append('price', parseInt(price));
+        formData.append('adName', name);
+        formData.append('description', description);
+        formData.append('tags', tags);
+        formData.append('type', type);
+        formData.append('photo', photo);
+        formData.append('token', token);
         const response = await fetch(`${editAdApiEndpoint}${id}?token=${token}`, {
           method: 'PUT',
-          body: JSON.stringify({
-            adName: `${name}`,
-            price: parseInt(price),
-            description: `${description}`,
-            tags: tags,
-            type: `${type}`,
-            photo: `${photo}`
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          body: formData,
+          // headers: {
+          //   'Content-Type': 'application/json'
+          // },
           // credentials: 'include'
         });
         const isEditAdOk = await response.json();
