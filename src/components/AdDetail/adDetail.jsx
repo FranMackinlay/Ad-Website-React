@@ -13,20 +13,23 @@ export default class adDetail extends Component {
     this.state = {
       ad: {},
       tags: [],
+      id: this.props.match.params._id,
+      token: localStorage.getItem('token'),
     };
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('token');
-    this.getDetailAd(this.props.match.params._id, token);
+    this.getDetailAd();
   }
 
   goToEditAd = () => {
     this.props.history.push(`/editAd/id=${this.state.ad._id}`);
   };
 
-  getDetailAd = async (id, token) => {
-    const { result, message } = await getAdDetail(id, token);
+  getDetailAd = async () => {
+    const { result, message } = await getAdDetail(this.state);
+    console.log('RESULT', result);
+    console.log('MESSAGE', message);
     if (message) {
       alert('No se ha podido encontrar el detalle de este anuncio');
       this.props.history.push('/anuncios');

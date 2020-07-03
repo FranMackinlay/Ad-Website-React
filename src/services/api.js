@@ -3,7 +3,7 @@ const api = (API_URL = 'http://localhost:3000') => {
   const registerApiEndpoint = `${API_URL}/api/register`;
   const loginApiEndpoint = `${API_URL}/api/authenticate`;
   const adsApiEndpoint = `${API_URL}/api/ads`;
-  const editAdApiEndpoint = `${API_URL}/apiv1/anuncios/`;
+  const editAdApiEndpoint = `${API_URL}/api/ads/`;
   return {
     register: async (username, password) => {
       try {
@@ -69,7 +69,7 @@ const api = (API_URL = 'http://localhost:3000') => {
         console.error(err);
       }
     },
-    getAdDetail: async (id, token) => {
+    getAdDetail: async ({ id, token }) => {
       console.log('id', id);
       console.log('token', token);
       try {
@@ -81,6 +81,7 @@ const api = (API_URL = 'http://localhost:3000') => {
           // credentials: 'include'
         });
         const isGetAdDetailOk = await response.json();
+        console.log('ISGETADDETAILOK', isGetAdDetailOk);
 
         return isGetAdDetailOk;
       } catch (err) {
@@ -145,12 +146,12 @@ const api = (API_URL = 'http://localhost:3000') => {
         console.error(err);
       }
     },
-    editAd: async (id, name, price, description, tags, type, photo) => {
+    editAd: async ({ id, token, name, price, description, tags, type, photo }) => {
       try {
-        const response = await fetch(`${editAdApiEndpoint}${id}`, {
+        const response = await fetch(`${editAdApiEndpoint}${id}?token=${token}`, {
           method: 'PUT',
           body: JSON.stringify({
-            name: `${name}`,
+            adName: `${name}`,
             price: parseInt(price),
             description: `${description}`,
             tags: tags,
@@ -163,7 +164,7 @@ const api = (API_URL = 'http://localhost:3000') => {
           // credentials: 'include'
         });
         const isEditAdOk = await response.json();
-
+        console.log('ISEDITADOK', isEditAdOk);
         return isEditAdOk;
 
       } catch (err) {
