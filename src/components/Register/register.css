@@ -65,7 +65,7 @@ input[type='password']:focus {
 	display: none;
 }
 .user-taken {
-	color: darkblue;
+	color: red;
 }
 
 .has-account {

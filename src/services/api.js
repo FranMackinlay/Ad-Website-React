@@ -1,17 +1,17 @@
 // const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com') => {
 const api = (API_URL = 'http://localhost:3000') => {
-  const registerApiEndpoint = `${API_URL}/api/register`;
+  const registerApiEndpoint = `${API_URL}/api/users`;
   const loginApiEndpoint = `${API_URL}/api/authenticate`;
   const adsApiEndpoint = `${API_URL}/api/ads`;
   const editAdApiEndpoint = `${API_URL}/api/ads/`;
   return {
-    register: async (username, password) => {
+    register: async (email, password) => {
       try {
         const response = await fetch(`${registerApiEndpoint}`, {
           method: 'POST',
           body: JSON.stringify({
-            username: `${username}`,
-            password: `${password}`
+            email,
+            password,
           }),
           headers: {
             'Content-type': 'application/json'
