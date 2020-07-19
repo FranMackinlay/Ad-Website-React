@@ -10,8 +10,8 @@ const api = (API_URL = 'http://localhost:3000') => {
         const response = await fetch(`${registerApiEndpoint}`, {
           method: 'POST',
           body: JSON.stringify({
-            email,
-            password,
+            email: email,
+            password: password,
           }),
           headers: {
             'Content-type': 'application/json'

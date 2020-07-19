@@ -15,29 +15,27 @@ export default class Register extends Component {
     };
   }
 
-  userTyping = event => {
-    this.setState({
-      userInput: event.target.value,
-    });
-  };
+  handleInput = event => {
+    const name = event.target.name;
+    const value = event.target.value;
 
-  passTyping = event => {
     this.setState({
-      passInput: event.target.value,
+      [name]: value,
     });
   };
 
   onSubmit = async event => {
     event.preventDefault();
-    const { userInput, passInput } = this.state;
-    const { error } = await register(userInput, passInput);
+    const { email, password } = this.state;
+    const { error } = await register(email, password);
 
     if (error) {
       this.setState({
         error: true,
       });
     } else {
-      this.props.history.push('/login');
+      alert('User created successfully');
+      this.goToLogin();
     }
   };
 
@@ -51,9 +49,9 @@ export default class Register extends Component {
         <h1>Create Account</h1>
 
         <form onSubmit={this.onSubmit}>
-          <input type='text' onChange={this.userTyping} placeholder='Username..' required />
+          <input type='text' onChange={this.handleInput} name='email' placeholder='Username..' required />
           <p className={this.state.error ? 'user-taken' : 'user'}>User already taken, try another one</p>
-          <input type='password' onChange={this.passTyping} placeholder='Password..' required />
+          <input type='password' onChange={this.handleInput} name='password' placeholder='Password..' required />
           <button type='submit'>Register</button>
           <Link to='/login'>
             <button className='has-account'>Already have an account?</button>

@@ -11,22 +11,22 @@ export default class Register extends Component {
     passInput: '',
   };
 
-  userTyping = event => {
+
+  handleInput = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+
     this.setState({
-      userInput: event.target.value,
-    });
-  };
-  passTyping = event => {
-    this.setState({
-      passInput: event.target.value,
+      [name]: value,
     });
   };
 
   onSubmit = async event => {
     event.preventDefault();
-    const { userInput, passInput } = this.state;
+    const { email, password } = this.state;
 
-    const { token, message } = await login(userInput, passInput);
+    const { token, message } = await login(email, password);
+    // console.log('MESSAGE', message.toString());
     if (token) {
       localStorage.setItem('token', token);
     }
@@ -50,8 +50,8 @@ export default class Register extends Component {
       <div className='login'>
         <h1>Login</h1>
         <form onSubmit={this.onSubmit}>
-          <input type='text' onChange={this.userTyping} placeholder='Username..' required />
-          <input type='password' onChange={this.passTyping} placeholder='Password..' required />
+          <input type='text' onChange={this.handleInput} name='email' placeholder='Username..' required />
+          <input type='password' onChange={this.handleInput} name='password' placeholder='Password..' required />
           <button type='submit'>Log In</button>
           <Link to='/register'>
             <button className='create-account'>Don't have an account?</button>
