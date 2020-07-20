@@ -15,7 +15,7 @@ export default class EditAd extends Component {
     super(props);
     this.state = {
       id: this.props.match.params._id,
-      token: localStorage.getItem('token'),
+      token: localStorage?.getItem('token'),
       name: '',
       price: 0,
       description: '',

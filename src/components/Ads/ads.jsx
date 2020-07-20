@@ -25,7 +25,7 @@ export default class Ads extends Component {
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('token');
+    const token = localStorage?.getItem('token');
     if (token) {
       this.setState({
         token

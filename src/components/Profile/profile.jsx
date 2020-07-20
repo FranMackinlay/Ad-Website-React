@@ -20,8 +20,8 @@ export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedUser: localStorage.getItem('user'),
-      token: localStorage.getItem('token'),
+      loggedUser: localStorage?.getItem('user'),
+      token: localStorage?.getItem('token'),
     }
   }
 

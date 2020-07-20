@@ -5,7 +5,7 @@ import Loading from '../Loading/Loading';
 import { Button } from 'primereact/button';
 import './adDetail.css';
 
-const { getAdDetail } = api();
+const { getAdDetail, deleteAd } = api();
 
 export default class adDetail extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class adDetail extends Component {
       ad: {},
       tags: [],
       id: this.props.match.params._id,
-      token: localStorage.getItem('token'),
+      token: localStorage?.getItem('token'),
     };
   }
 
@@ -41,10 +41,22 @@ export default class adDetail extends Component {
     }
   };
 
-  renderEditBtn = (ad) => (
-    <Link className='edit-link' to={`/editAd/id=${ad._id}`}>
-      <Button label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
-    </Link>
+  deleteAd = async () => {
+    const { result } = await deleteAd(this.state);
+    if (result) {
+      this.props.history.push('/ads');
+    }
+  };
+
+  renderUtilities = (ad) => (
+    <div className="utilities">
+      <Link className='edit-ad-container' to={`/editAd/id=${ad._id}`}>
+        <Button label='Edit' icon='pi pi-pencil' className='p-button-raised p-button-rounded p-button-warning' />
+      </Link>
+      <div className="delete-ad-container">
+        <Button id='delete-ad' onClick={this.deleteAd} label='Delete' className='p-button-rounded p-button-raised p-button-danger' />
+      </div>
+    </div>
   );
 
   render() {
@@ -61,11 +73,12 @@ export default class adDetail extends Component {
     }
     const adTagsArray = tags.toString();
 
-    const author = localStorage.getItem('user');
+    const author = localStorage?.getItem('user');
 
     const adTags = adTagsArray.replace(/,/g, ' - ');
 
     if (!ad.photo) return <Loading></Loading>;
+
 
     return (
       <div>
@@ -85,7 +98,7 @@ export default class adDetail extends Component {
             <p className='detail description'>{ad.description}</p>
             <p className='detail'>Tags: {adTags}</p>
             <p className='detail'>Owner: {ad.author}</p>
-            {author === ad.author ? this.renderEditBtn(ad) : ''}
+            {author === ad.author ? this.renderUtilities(ad) : ''}
           </div>
         </div>
       </div>

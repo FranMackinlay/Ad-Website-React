@@ -38,10 +38,11 @@ export default class CreateAd extends Component {
   };
 
   onSubmit = async event => {
-    const token = localStorage.getItem('token');
+    const token = localStorage?.getItem('token');
+    const author = localStorage?.getItem('user');
     event.preventDefault();
     const { adName, price, description, tags, type, photo } = this.state;
-    const { result } = await createAd(adName, price, description, tags, type, photo, token);
+    const { result } = await createAd(adName, price, description, tags, type, photo, author, token);
     if (!result.includes('success')) {
       alert('Ups, something went wrong. Please try again.')
     } else {

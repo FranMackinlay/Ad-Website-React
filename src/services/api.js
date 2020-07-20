@@ -71,7 +71,7 @@ const api = (API_URL = 'http://localhost:3000') => {
     },
     getAdDetail: async ({ id, token }) => {
       try {
-        const response = await fetch(`${adsApiEndpoint}/${id}?token=${token}`, {
+        const response = await fetch(`${adsListApiEndpoint}/${id}?token=${token}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ const api = (API_URL = 'http://localhost:3000') => {
         console.error(err);
       }
     },
-    createAd: async (adName, price, description, tags, type, photo, token) => {
+    createAd: async (adName, price, description, tags, type, photo, author, token) => {
       try {
         const formData = new FormData();
         formData.append('price', parseInt(price));
@@ -121,6 +121,7 @@ const api = (API_URL = 'http://localhost:3000') => {
         formData.append('tags', tags);
         formData.append('type', type);
         formData.append('photo', photo);
+        formData.append('author', author);
         formData.append('token', token);
 
         const response = await fetch(`${adsApiEndpoint}?token=${token}`, {

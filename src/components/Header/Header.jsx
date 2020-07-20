@@ -3,7 +3,7 @@ import './Header.css';
 
 export default function Header() {
 
-  const user = localStorage.getItem('user')?.split('@')[0];
+  const user = localStorage?.getItem('user')?.split('@')[0];
 
   return (
     <div className='header-container'>

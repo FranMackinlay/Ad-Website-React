@@ -21,13 +21,6 @@ export default function CardItem({ ad, history, isUserAd }) {
     history.push(`/editAd/id=${ad._id}`);
   };
 
-  const footer = (
-    <span>
-      <Button onClick={goToEditAd} label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
-    </span>
-  );
-
-
 
   const type = {};
   if (ad.sale) {
@@ -36,13 +29,13 @@ export default function CardItem({ ad, history, isUserAd }) {
     type.sale = 'buy';
   }
 
-  const user = localStorage.getItem('user');
-  const author = ad.author.split('@')[0];
+  const user = localStorage?.getItem('user');
+  const author = ad.author?.split('@')[0];
 
   return (
     <li className={`p-col-2 ${isUserAd ? 'user-li-card' : ''}`}>
       <Link key={ad._id} to={`/ads/${ad._id}`}>
-        <Card title={ad.adName} className='ui-card-shadow card-item' footer={user === ad.author ? footer : ''} header={header2 ? header2 : header}>
+        <Card title={ad.adName} className='ui-card-shadow card-item' header={header2 ? header2 : header}>
           <div className='price-type'>
             <p>Price: {ad.price}</p>
             <p>Type: {type.sale}</p>

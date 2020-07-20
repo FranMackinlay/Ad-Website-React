@@ -58,6 +58,14 @@
 	margin: 17px 0;
 }
 
+.utilities {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  justify-content: space-around;
+}
+
+
 @media (max-width: 900px) {
 	.detail-container {
 		flex-direction: column;
@@ -76,9 +84,6 @@
 	}
 	.ad-name {
 		font-size: 25px;
-	}
-	.edit-link {
-		margin: 15px auto;
 	}
 }
 
