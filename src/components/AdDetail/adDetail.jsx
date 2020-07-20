@@ -41,6 +41,12 @@ export default class adDetail extends Component {
     }
   };
 
+  renderEditBtn = (ad) => (
+    <Link className='edit-link' to={`/editAd/id=${ad._id}`}>
+      <Button label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
+    </Link>
+  );
+
   render() {
     const { ad, tags } = this.state;
     const type = {};
@@ -54,6 +60,8 @@ export default class adDetail extends Component {
       image = ad.photo;
     }
     const adTagsArray = tags.toString();
+
+    const author = localStorage.getItem('user');
 
     const adTags = adTagsArray.replace(/,/g, ' - ');
 
@@ -76,9 +84,8 @@ export default class adDetail extends Component {
             </div>
             <p className='detail description'>{ad.description}</p>
             <p className='detail'>Tags: {adTags}</p>
-            <Link className='edit-link' to={`/editAd/id=${ad._id}`}>
-              <Button label='Edit' icon='pi pi-pencil' className='p-button-rounded p-button-warning' />
-            </Link>
+            <p className='detail'>Owner: {ad.author}</p>
+            {author === ad.author ? this.renderEditBtn(ad) : ''}
           </div>
         </div>
       </div>

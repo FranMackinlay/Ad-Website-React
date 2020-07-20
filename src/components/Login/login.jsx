@@ -11,7 +11,6 @@ export default class Register extends Component {
     passInput: '',
   };
 
-
   handleInput = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -26,9 +25,10 @@ export default class Register extends Component {
     const { email, password } = this.state;
 
     const { token, message } = await login(email, password);
-    // console.log('MESSAGE', message.toString());
+
     if (token) {
       localStorage.setItem('token', token);
+      localStorage.setItem('user', email);
     }
     if (message) {
       alert(message);

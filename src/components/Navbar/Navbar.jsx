@@ -12,7 +12,7 @@ export default function Navbar({ onSubmit, onResetFilter }) {
   return (
     <Menubar>
       <div className='logo-container'>
-        <h1 className='title'>ReactAds</h1>
+        <h1 className='title'>SecondAds</h1>
       </div>
       <div className='form-container'>
         <FilterForm onSubmit={onSubmit} onResetFilter={onResetFilter} />

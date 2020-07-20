@@ -1,12 +1,17 @@
-body .p-card {
+body .card-item {
 	margin: 10px;
 	border-radius: 10px;
 	transition: 0.25s;
 }
-body .p-card:hover {
+body .card-item:hover {
 	margin: 0;
 	transition: 0.25s;
 	background-color: lightgrey;
+}
+
+.user-li-card {
+  width: 300px;
+  text-align: center;
 }
 
 .card-image {

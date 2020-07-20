@@ -36,6 +36,7 @@ export default class Ads extends Component {
 
   getAdsList = async token => {
     const result = await getAds(token);
+    console.log('RESULT', result);
     if (!result) {
       return this.setState({
         adList: false,

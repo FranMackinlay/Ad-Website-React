@@ -179,6 +179,39 @@ const api = (API_URL = 'http://localhost:3000') => {
       } catch (error) {
         console.error(error);
       }
+    },
+    getUser: async email => {
+      try {
+        const response = await fetch(`${registerApiEndpoint}?email=${email}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          // credentials: 'include'
+        });
+        const isGetAdDetailOk = await response.json();
+
+        return isGetAdDetailOk;
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    getUserAds: async (token, email) => {
+      try {
+        const response = await fetch(`${adsApiEndpoint}?token=${token}&email=${email}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+
+        const isGetUserAdsOk = await response.json();
+        console.log('ISGETUSERADSOK', isGetUserAdsOk);
+
+        return isGetUserAdsOk;
+      } catch (error) {
+
+      }
     }
 
 
