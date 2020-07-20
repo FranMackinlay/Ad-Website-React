@@ -1,7 +1,7 @@
 const filterParams = [
   {
     label: 'Name',
-    value: 'name',
+    value: 'adName',
     placeHolder: 'Nombre del anuncio'
   },
   {
@@ -11,7 +11,7 @@ const filterParams = [
   },
   {
     label: 'Type',
-    value: 'venta',
+    value: 'sale',
     placeHolder: 'buy or sell'
   },
   {

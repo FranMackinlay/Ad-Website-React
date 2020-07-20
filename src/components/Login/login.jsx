@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import { Button } from 'primereact/button';
 import './login.css';
 
 const { login } = api();
@@ -32,7 +33,6 @@ export default class Register extends Component {
     }
     if (message) {
       alert(message);
-      this.goToRegistration();
     } else {
       this.props.history.push({
         pathname: '/ads',
@@ -47,16 +47,21 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className='login'>
-        <h1>Login</h1>
-        <form onSubmit={this.onSubmit}>
-          <input type='text' onChange={this.handleInput} name='email' placeholder='Username..' required />
-          <input type='password' onChange={this.handleInput} name='password' placeholder='Password..' required />
-          <button type='submit'>Log In</button>
-          <Link to='/register'>
-            <button className='create-account'>Don't have an account?</button>
-          </Link>
-        </form>
+      <div>
+        <Link className='back-to-ads' to='/ads'>
+          <Button id='back-btn' label='Back' className='p-button-raised p-button-rounded p-button-secondary' />
+        </Link>
+        <div className='login'>
+          <h1>Login</h1>
+          <form onSubmit={this.onSubmit}>
+            <input type='text' onChange={this.handleInput} name='email' placeholder='Username..' required />
+            <input type='password' onChange={this.handleInput} name='password' placeholder='Password..' required />
+            <button type='submit'>Log In</button>
+            <Link to='/register'>
+              <button className='create-account'>Don't have an account?</button>
+            </Link>
+          </form>
+        </div>
       </div>
     );
   }

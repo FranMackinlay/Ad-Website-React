@@ -36,7 +36,6 @@ export default class Ads extends Component {
 
   getAdsList = async token => {
     const result = await getAds(token);
-    console.log('RESULT', result);
     if (!result) {
       return this.setState({
         adList: false,
@@ -51,13 +50,14 @@ export default class Ads extends Component {
   onSubmit = async data => {
     this.onResetFilter();
     const { filterSelect, filterInput } = data;
-    const { results, error } = await filterAd(`${filterSelect}`, `${filterInput}`);
+    const { adList } = await filterAd(`${filterSelect}`, `${filterInput}`);
+    console.log('adList', adList);
 
-    if (error) {
+    if (!adList) {
       alert('Please type a valid filter');
     } else {
       this.setState({
-        filteredAdsList: results,
+        filteredAdsList: adList,
       });
     }
   };

@@ -55,6 +55,9 @@ export default class Profile extends Component {
     if (!ads) return <Loading></Loading>;
     return (
       <Card className="user-card">
+        <Link className='back-to-ads' to='/ads'>
+          <Button id='back-btn' label='Back' className='p-button-raised p-button-rounded p-button-secondary' />
+        </Link>
         <div className="username">
           <h1>Username: {user}</h1>
           <h4>My Ads:</h4>

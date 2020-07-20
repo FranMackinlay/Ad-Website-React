@@ -65,7 +65,7 @@ export default function Navbar({ onSubmit, onResetFilter }) {
     <Menubar>
       <div className='logo-container'>
         <Link to='/ads'>
-          <h1 className='title'>SecondAds</h1>
+          <h1 onClick={onResetFilter} className='title'>SecondHand</h1>
         </Link>
       </div>
       <div className='form-container'>

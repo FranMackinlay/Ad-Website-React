@@ -60,8 +60,6 @@ const api = (API_URL = 'http://localhost:3000') => {
         });
         const isGetAdsSuccesfull = await response.json();
 
-        console.log('ISGETADSSUCCESFULL', isGetAdsSuccesfull);
-
         const { adList } = isGetAdsSuccesfull;
         return adList;
 
@@ -86,18 +84,20 @@ const api = (API_URL = 'http://localhost:3000') => {
       }
     },
     filterAd: async (query, value) => {
-      switch (value) {
-        case 'buy':
-          value = false;
-          break;
-        case 'sell':
-          value = true;
-          break;
-        default:
-          break;
-      }
+      console.log('QUERY', query);
+      console.log('value', value);
+      // switch (value) {
+      //   case 'buy':
+      //     value = false;
+      //     break;
+      //   case 'sell':
+      //     value = true;
+      //     break;
+      //   default:
+      //     break;
+      // }
       try {
-        const response = await fetch(`${adsApiEndpoint}?${query}=${value}`, {
+        const response = await fetch(`${adsListApiEndpoint}?${query}=${value}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ const api = (API_URL = 'http://localhost:3000') => {
           // credentials: 'include'
         });
         const isFilterAdOk = await response.json();
-
+        console.log('ISFILTEROK', isFilterAdOk);
         return isFilterAdOk;
 
       } catch (err) {
@@ -210,7 +210,6 @@ const api = (API_URL = 'http://localhost:3000') => {
         });
 
         const isGetUserAdsOk = await response.json();
-        console.log('ISGETUSERADSOK', isGetUserAdsOk);
 
         return isGetUserAdsOk;
       } catch (error) {
