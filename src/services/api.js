@@ -1,5 +1,5 @@
-// const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com') => {
-const api = (API_URL = 'http://localhost:3000') => {
+// const api = (API_URL = 'http://3.19.218.251') => {
+const api = (API_URL = 'http://ec2-3-19-218-251.us-east-2.compute.amazonaws.com') => {
   const registerApiEndpoint = `${API_URL}/api/users`;
   const loginApiEndpoint = `${API_URL}/api/authenticate`;
   const adsListApiEndpoint = `${API_URL}/api/adsList`;
