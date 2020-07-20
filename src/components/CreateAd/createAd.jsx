@@ -63,7 +63,6 @@ export default class CreateAd extends Component {
       this.uploadInvoice(e.target.result);
     };
     fileReader.readAsDataURL(file);
-    console.log('FILEREADER', fileReader);
   };
 
   render() {

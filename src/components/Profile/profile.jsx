@@ -41,7 +41,6 @@ export default class Profile extends Component {
   findUserAds = async () => {
     const { token, loggedUser } = this.state;
     const { userAds } = await getUserAds(token, loggedUser);
-    console.log('USERADS', userAds);
     this.setState({
       ads: userAds,
     });
@@ -51,7 +50,6 @@ export default class Profile extends Component {
 
   render() {
     const { user, ads } = this.state;
-    console.log('ADS', ads)
     if (!ads) return <Loading></Loading>;
     return (
       <Card className="user-card">

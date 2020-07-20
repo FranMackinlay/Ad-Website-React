@@ -84,18 +84,6 @@ const api = (API_URL = 'http://localhost:3000') => {
       }
     },
     filterAd: async (query, value) => {
-      console.log('QUERY', query);
-      console.log('value', value);
-      // switch (value) {
-      //   case 'buy':
-      //     value = false;
-      //     break;
-      //   case 'sell':
-      //     value = true;
-      //     break;
-      //   default:
-      //     break;
-      // }
       try {
         const response = await fetch(`${adsListApiEndpoint}?${query}=${value}`, {
           method: 'GET',
@@ -105,7 +93,6 @@ const api = (API_URL = 'http://localhost:3000') => {
           // credentials: 'include'
         });
         const isFilterAdOk = await response.json();
-        console.log('ISFILTEROK', isFilterAdOk);
         return isFilterAdOk;
 
       } catch (err) {

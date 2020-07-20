@@ -51,7 +51,6 @@ export default class Ads extends Component {
     this.onResetFilter();
     const { filterSelect, filterInput } = data;
     const { adList } = await filterAd(`${filterSelect}`, `${filterInput}`);
-    console.log('adList', adList);
 
     if (!adList) {
       alert('Please type a valid filter');
