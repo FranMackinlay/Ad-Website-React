@@ -6,6 +6,7 @@ import Ads from './components/Ads/ads';
 import adDetail from './components/AdDetail/adDetail';
 import CreateAd from './components/CreateAd/createAd';
 import EditAd from './components/EditAd/editAd';
+import Profile from './components/Profile/profile';
 import './App.css';
 
 export default class App extends Component {
@@ -19,6 +20,7 @@ export default class App extends Component {
           <Route exact path="/anuncios/:_id" component={adDetail} />
           <Route path="/anuncios" component={Ads} />
           <Route path="/createAd" component={CreateAd} />
+          <Route path="/profile" component={Profile} />
           <Route to="/register" component={Register} />
         </Switch>
       </Router>
