@@ -17,11 +17,11 @@ export default class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route exact path="/editAd/id=:_id" component={EditAd} />
-          <Route exact path="/anuncios/:_id" component={adDetail} />
-          <Route path="/anuncios" component={Ads} />
+          <Route exact path="/ads/:_id" component={adDetail} />
+          <Route path="/ads" component={Ads} />
           <Route path="/createAd" component={CreateAd} />
           <Route path="/profile" component={Profile} />
-          <Route to="/register" component={Register} />
+          <Route to="/ads" component={Ads} />
         </Switch>
       </Router>
     );

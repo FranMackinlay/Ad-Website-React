@@ -2,6 +2,7 @@
 const api = (API_URL = 'http://localhost:3000') => {
   const registerApiEndpoint = `${API_URL}/api/users`;
   const loginApiEndpoint = `${API_URL}/api/authenticate`;
+  const adsListApiEndpoint = `${API_URL}/api/adsList`;
   const adsApiEndpoint = `${API_URL}/api/ads`;
   const editAdApiEndpoint = `${API_URL}/api/ads/`;
   return {
@@ -48,9 +49,9 @@ const api = (API_URL = 'http://localhost:3000') => {
         console.error(err);
       }
     },
-    getAds: async (token) => {
+    getAds: async () => {
       try {
-        const response = await fetch(`${adsApiEndpoint}?token=${token}`, {
+        const response = await fetch(`${adsListApiEndpoint}`, {
           method: 'GET',
           headers: {
             'Content-type': 'application/json'
@@ -58,6 +59,8 @@ const api = (API_URL = 'http://localhost:3000') => {
           // // credentials: 'include'
         });
         const isGetAdsSuccesfull = await response.json();
+
+        console.log('ISGETADSSUCCESFULL', isGetAdsSuccesfull);
 
         const { adList } = isGetAdsSuccesfull;
         return adList;

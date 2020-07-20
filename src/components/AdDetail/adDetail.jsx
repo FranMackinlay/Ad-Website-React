@@ -32,7 +32,7 @@ export default class adDetail extends Component {
     console.log('MESSAGE', message);
     if (message) {
       alert('No se ha podido encontrar el detalle de este anuncio');
-      this.props.history.push('/anuncios');
+      this.props.history.push('/ads');
     } else {
       this.setState({
         ad: result,
@@ -69,7 +69,7 @@ export default class adDetail extends Component {
 
     return (
       <div>
-        <Link className='back-to-ads' to='/anuncios'>
+        <Link className='back-to-ads' to='/ads'>
           <Button id='back-btn' label='Back' className='p-button-raised p-button-rounded p-button-secondary' />
         </Link>
         <div className='detail-container'>

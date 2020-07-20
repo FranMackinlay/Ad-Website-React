@@ -41,7 +41,7 @@ export default function CardItem({ ad, history, isUserAd }) {
 
   return (
     <li className={`p-col-2 ${isUserAd ? 'user-li-card' : ''}`}>
-      <Link key={ad._id} to={`/anuncios/${ad._id}`}>
+      <Link key={ad._id} to={`/ads/${ad._id}`}>
         <Card title={ad.adName} className='ui-card-shadow card-item' footer={user === ad.author ? footer : ''} header={header2 ? header2 : header}>
           <div className='price-type'>
             <p>Price: {ad.price}</p>

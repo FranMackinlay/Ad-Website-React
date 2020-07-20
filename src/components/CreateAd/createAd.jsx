@@ -45,7 +45,7 @@ export default class CreateAd extends Component {
     if (!result.includes('success')) {
       alert('Ups, something went wrong. Please try again.')
     } else {
-      this.props.history.push('/anuncios');
+      this.props.history.push('/ads');
     }
   };
 
@@ -68,7 +68,7 @@ export default class CreateAd extends Component {
   render() {
     return (
       <div>
-        <Link className='back-to-ads' to='/anuncios'>
+        <Link className='back-to-ads' to='/ads'>
           <Button id='back-btn' label='Back' className='p-button-raised p-button-rounded p-button-secondary' />
         </Link>
         <form className='create-ad-form' onSubmit={this.onSubmit}>

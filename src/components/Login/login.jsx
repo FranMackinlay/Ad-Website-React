@@ -35,7 +35,7 @@ export default class Register extends Component {
       this.goToRegistration();
     } else {
       this.props.history.push({
-        pathname: '/anuncios',
+        pathname: '/ads',
         state: { token }
       })
     }

@@ -64,12 +64,12 @@ export default class EditAd extends Component {
     const { result } = await editAd(this.state);
     if (!result) {
       this.props.history.push({
-        pathname: '/anuncios',
+        pathname: '/ads',
         state: { isAdEditedSuccesfully: false },
       });
     } else {
       this.props.history.push({
-        pathname: '/anuncios',
+        pathname: '/ads',
         state: { isAdEditedSuccesfully: true },
       });
     }
@@ -78,7 +78,7 @@ export default class EditAd extends Component {
   deleteAd = async () => {
     const { result } = await deleteAd(this.state);
     if (result) {
-      this.props.history.push('/anuncios');
+      this.props.history.push('/ads');
     }
   };
 
@@ -102,7 +102,7 @@ export default class EditAd extends Component {
     if (!photo) return <Loading></Loading>;
     return (
       <div>
-        <Link className='back-to-ads' to='/anuncios'>
+        <Link className='back-to-ads' to='/ads'>
           <Button id='back-btn' label='Back' className='p-button-raised p-button-rounded p-button-secondary' />
         </Link>
         <form className='edit-ad-form' onSubmit={this.onSubmit}>
